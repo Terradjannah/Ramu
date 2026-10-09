@@ -1,61 +1,62 @@
 # Ramu
 
-Ramu adalah aplikasi Android untuk melihat kondisi perangkat dan kebiasaan pemakaian dalam satu tempat. Beranda menampilkan ringkasan baterai, memori, jaringan, penyimpanan, waktu layar, dan penggunaan internet. Karakter pendamping memberi jalan cepat ke obrolan AI lokal dan halaman rincian.
+Ramu is an Android app for viewing device health and usage habits in one place. The home screen summarizes battery, memory, network, storage, screen time, and internet usage. Its companion character provides quick access to local AI chat and detailed views.
 
-Proyek ini masih **beta 0.5**. Angka monitor bergantung pada data yang disediakan Android dan izin yang Anda berikan. Model AI tidak disertakan dalam APK.
+The project is currently in **beta 0.5**. Monitor values depend on data provided by Android and the permissions you grant. The AI model is not included in the APK.
 
-## Unduh dan pasang
+## Download and install
 
-1. Buka [GitHub Releases Ramu](https://github.com/Terradjannah/Ramu/releases/tag/v0.5-beta), lalu unduh **Ramu.apk** dari bagian *Assets*. Jangan memasang berkas dari sumber lain.
-2. Di ponsel Android 10 atau lebih baru, buka APK yang diunduh. Jika Android meminta izin memasang aplikasi dari sumber ini, izinkan untuk aplikasi pengelola berkas atau browser yang Anda pakai, lalu lanjutkan pemasangan.
-3. Jalankan Ramu dan selesaikan pengaturan awal. Izin yang belum diberikan dapat dibuka kembali melalui **Pengaturan → Izin aplikasi** di dalam Ramu.
+1. Open [Ramu GitHub Releases](https://github.com/Terradjannah/Ramu/releases/tag/v0.5-beta) and download **Ramu.apk** from the *Assets* section. Do not install APKs from other sources.
+2. On a phone running Android 10 or later, open the downloaded APK. If Android asks you to allow installs from this source, grant permission to the file manager or browser you are using, then continue the installation.
+3. Launch Ramu and complete the initial setup. You can grant permissions later from **Settings → App permissions** in Ramu.
 
-Tautan unduhan langsung yang dapat dipakai pada situs Ramu: [Ramu.apk](https://github.com/Terradjannah/Ramu/releases/download/v0.5-beta/Ramu.apk). Versi yang terpasang dapat dilihat melalui informasi aplikasi di pengaturan Android. Pembaruan berikutnya harus ditandatangani dengan kunci release yang sama agar dapat dipasang di atas versi lama.
+Direct download link for the Ramu website: [Ramu.apk](https://github.com/Terradjannah/Ramu/releases/download/v0.5-beta/Ramu.apk). You can check the installed version in Android's app information. Future updates must be signed with the same release key to install over an existing version.
 
-## Fitur
+## Features
 
-| Bagian | Yang tersedia |
+| Section | What's available |
 | --- | --- |
-| Beranda | Ringkasan waktu layar, internet, baterai, RAM, jaringan, dan penyimpanan; karakter pendamping dan jalan cepat ke obrolan. |
-| Aktivitas | Rincian waktu layar, pemakaian aplikasi, penggunaan internet, riwayat, serta batas yang dapat diatur pengguna. |
-| Monitor perangkat | Rincian baterai, memori, jaringan, penyimpanan, dan sensor sesuai dukungan perangkat. |
-| Notifikasi | Log notifikasi lokal jika akses baca notifikasi diaktifkan. |
-| AI lokal | Obrolan dengan model Gemma yang diunduh terpisah dan dijalankan di perangkat melalui LiteRT-LM CPU. |
-| Pengaturan | Izin, jadwal pencatatan, pengingat, ekspor CSV, serta cadangan dan pemulihan lokal. |
+| Home | Summaries of screen time, internet, battery, RAM, network, and storage; companion character and a shortcut to chat. |
+| Activity | Screen time details, app usage, internet usage, history, and user-configurable limits. |
+| Device monitor | Battery, memory, network, storage, and sensor details, depending on device support. |
+| Notifications | Local notification log when notification access is enabled. |
+| Local AI | Chat with a Gemma model downloaded separately and run on-device through LiteRT-LM CPU. |
+| Settings | Permissions, recording schedules, reminders, CSV export, and local backup and restore. |
 
-## Izin yang diminta
+## Requested permissions
 
-Ramu menampilkan status izin di **Pengaturan → Izin aplikasi**. Anda dapat menunda izin saat pengaturan awal; fitur terkait baru memperoleh datanya setelah izin diberikan.
+Ramu shows permission status under **Settings → App permissions**. You can defer permissions during initial setup; related features will receive data only after you grant them.
 
-| Akses | Cara memberi izin | Dipakai untuk |
+| Access | How to grant it | Used for |
 | --- | --- | --- |
-| Akses penggunaan | Ketuk **Akses penggunaan**, pilih Ramu di pengaturan Android, lalu izinkan. | Waktu layar dan pemakaian per aplikasi. |
-| Akses baca notifikasi | Ketuk **Baca notifikasi**, pilih Ramu, lalu setujui dialog sistem. | Log notifikasi lokal. Izin ini dapat memperlihatkan isi notifikasi yang sensitif kepada aplikasi. |
-| Kirim notifikasi | Ketuk **Kirim notifikasi** dan izinkan saat diminta pada Android 13 atau lebih baru. | Pengingat dan status layanan pemantauan. |
-| Mulai otomatis dan pengaturan baterai | Jika pemantauan terjadwal tertunda, periksa kedua pilihan ini di **Izin aplikasi** dan pengaturan ponsel. | Membantu pencatatan/pengingat berjalan di latar belakang. Perilakunya berbeda antarperangkat. |
+| Usage access | Tap **Usage access**, select Ramu in Android settings, then allow access. | Screen time and per-app usage. |
+| Notification access | Tap **Read notifications**, select Ramu, then approve the system dialog. | Local notification log. This permission can expose sensitive notification content to the app. |
+| Send notifications | Tap **Send notifications** and allow access when prompted on Android 13 or later. | Reminders and monitoring service status. |
+| Autostart and battery settings | If scheduled monitoring is delayed, check both options under **App permissions** and in your phone settings. | Helps recording and reminders run in the background. Behavior varies by device. |
 
-Ramu juga memakai akses internet untuk mengunduh model AI dan menjalankan fungsi jaringan yang Anda pilih. Pengecualian optimasi baterai bersifat opsional. Memberi izin saja tidak otomatis menyalakan semua bentuk pencatatan atau pengingat.
+Ramu also uses internet access to download AI models and run network features you choose. Exemption from battery optimization is optional. Granting permissions alone does not automatically enable every kind of recording or reminder.
 
-## Model AI dan data
+## AI models and data
 
-APK tidak memuat model atau token Hugging Face. Buka **Model lokal** di Ramu untuk memilih model; unduhan dapat memerlukan beberapa gigabita ruang kosong, akun Hugging Face, persetujuan lisensi model, dan token baca untuk model yang dibatasi. Simpan token hanya melalui formulir di aplikasi, jangan di issue atau tangkapan layar publik. Kecepatan dan kebutuhan RAM bergantung pada ponsel.
+The APK does not include an AI model or a Hugging Face token. Open **Local models** in Ramu to choose a model. Downloads may require several gigabytes of free space, a Hugging Face account, acceptance of the model license, and a read token for gated models. Enter tokens only in the in-app form; do not include them in issues or public screenshots. Speed and RAM requirements depend on your phone.
 
-Obrolan, catatan pemantauan, pengaturan, dan model yang telah diunduh disimpan di perangkat. Ekspor CSV dan cadangan lokal dibagikan hanya saat Anda memilihnya. Unduhan model dan pemeriksaan jaringan memakai koneksi internet. Sumber ini belum mengonfigurasi endpoint dan kunci untuk pembaruan katalog model jarak jauh; jangan menganggap katalog jarak jauh aktif pada build ini.
+Chats, monitoring records, settings, and downloaded models are stored on your device. CSV exports and local backups are shared only when you choose to export or share them. Model downloads and network checks use an internet connection. This source tree does not configure the endpoint or keys for remote model catalog updates, so do not assume the remote catalog is active in this build.
 
-## Tangkapan layar
+## Screenshots
 
-Gambar berikut diambil dari build Ramu pada emulator uji baru. Angka monitor pada emulator hanya contoh keadaan perangkat uji.
+These images were captured from a Ramu build on a fresh test emulator. Monitor values shown on the emulator are examples from the test device.
 
-| Beranda | Perkenalan |
+| Home | Introduction |
 | --- | --- |
-| ![Beranda Ramu dengan karakter Bao](screenshots/home.png) | ![Pilih nama dan karakter](screenshots/perkenalan.png) |
+| ![Ramu home screen with Bao](screenshots/home.png) | ![Choose a name and character](screenshots/perkenalan.png) |
 
-| Sambutan | Izin aplikasi |
+| Welcome | App permissions |
 | --- | --- |
-| ![Layar sambutan Ramu](screenshots/onboarding.png) | ![Pilihan izin Ramu](screenshots/permissions.png) |
-## Bangun dari source
+| ![Ramu welcome screen](screenshots/onboarding.png) | ![Ramu permission options](screenshots/permissions.png) |
 
-Repositori ini memuat aplikasi Android dan berkas Gradle yang diperlukan. Siapkan Android Studio dengan Android SDK 36 dan JDK 21, lalu jalankan:
+## Build from source
+
+This repository contains the Android app and the Gradle files required to build it. Set up Android Studio with Android SDK 36 and JDK 21, then run:
 
 ```powershell
 git clone https://github.com/Terradjannah/Ramu.git
@@ -63,10 +64,10 @@ cd Ramu
 .\gradlew.bat :app:assembleRelease
 ```
 
-Gradle menghasilkan APK release **belum ditandatangani**. Untuk pemasangan atau distribusi, pengelola rilis harus menandatanganinya dengan keystore milik proyek, lalu memverifikasi tanda tangan dan checksum. Keystore, password, `local.properties`, model, data pengguna, hasil build, dan APK tidak disimpan di source. APK resmi tersedia di GitHub Releases.
+Gradle produces an **unsigned** release APK. Before installation or distribution, the release maintainer must sign it with the project's keystore and verify its signature and checksum. The keystore, passwords, `local.properties`, models, user data, build outputs, and APKs are not stored in the source. Official APKs are available from GitHub Releases.
 
-## Struktur repo dan lisensi
+## Repository structure and license
 
-`app/` berisi source aplikasi, resource, dan pengujian Android; berkas Gradle di root dipakai untuk build. Lisensi pihak ketiga yang menyertai ikon tersedia di [`app/src/main/assets/licenses/`](app/src/main/assets/licenses/). Model Gemma memiliki ketentuan lisensi tersendiri di sumber unduhnya dan tidak didistribusikan di sini.
+`app/` contains the app source, resources, and Android tests; the Gradle files in the root are used for builds. Third-party licenses accompanying icons are available in [`app/src/main/assets/licenses/`](app/src/main/assets/licenses/). Gemma models have their own license terms at their download source and are not distributed here.
 
-Kode Ramu diterbitkan untuk dilihat dan dibangun; belum ada lisensi penggunaan ulang umum untuk source proyek ini. Jika ingin memakai ulang kode atau aset Ramu di proyek lain, hubungi pemilik repo terlebih dahulu. Laporkan masalah keamanan secara privat melalui fitur **Report a vulnerability** GitHub bila tersedia; jangan lampirkan token, cadangan, atau data pribadi dalam issue publik.
+Ramu's code is published for viewing and building; the project source does not have a general reuse license. Contact the repository owner before reusing Ramu code or assets in another project. Report security issues privately through GitHub's **Report a vulnerability** feature, if available. Do not include tokens, backups, or personal data in public issues.
