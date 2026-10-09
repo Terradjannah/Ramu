@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:padding="10dp">
+
+    <!-- Battery Section -->
+    <LinearLayout
+        android:id="@+id/widget_sec_battery"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BATTERY"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:id="@+id/widget_battery_pct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/widget_battery_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--°C"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorSecondary" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- RAM & CPU Section -->
+    <LinearLayout
+        android:id="@+id/widget_sec_ram"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RAM &amp; CPU"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:id="@+id/widget_ram_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/widget_cpu_usage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPU: --%"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorSecondary" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Network & Screen Time Section -->
+    <LinearLayout
+        android:id="@+id/widget_sec_network"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NETWORK"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:id="@+id/widget_ping_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-- ms"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/widget_screen_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Screen: --m"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorSecondary" />
+    </LinearLayout>
+
+</LinearLayout>

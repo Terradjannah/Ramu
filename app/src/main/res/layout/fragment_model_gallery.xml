@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/buddy_stage"
+    android:theme="@style/ThemeOverlay.Buddy.Surface">
+
+    <com.assistant.adi.ui.buddy.BuddyContentColumn
+        style="@style/Buddy.Panel"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            style="@style/Buddy.Title"
+            android:text="Model untuk Buddy" />
+
+        <TextView
+            android:id="@+id/tv_catalog_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/buddy_sub"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_storage_available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tersedia: -- GB"
+                android:textColor="@color/buddy_sub"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_license"
+                style="@style/Widget.Buddy.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akses unduhan"
+                app:icon="@drawable/ic_ms_download"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_storage_warning"
+            style="@style/Widget.Buddy.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/model_storage_warning"
+            android:textColor="@color/buddy_danger"
+            app:icon="@drawable/ic_ms_info"
+            app:iconTint="@color/buddy_danger"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_model_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"
+            android:accessibilityPaneTitle="Model yang tersedia"
+            tools:listitem="@layout/item_model_gallery" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_open_chat"
+            style="@style/Widget.Buddy.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:text="Buka chat"
+            app:icon="@drawable/ic_ms_chat" />
+
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

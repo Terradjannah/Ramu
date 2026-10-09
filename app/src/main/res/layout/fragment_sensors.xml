@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/buddy_stage"
+    android:theme="@style/ThemeOverlay.Buddy.Surface">
+
+    <com.assistant.adi.ui.buddy.BuddyContentColumn
+        style="@style/Buddy.Panel"
+        android:layout_gravity="center_horizontal">
+
+        <!-- Light Sensor Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cahaya sekitar"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub" />
+                    
+                    <TextView
+                        android:id="@+id/tv_sensor_lux"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-- lux"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_action"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Icon/status shape -->
+                <ImageView
+                    android:id="@+id/img_light_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    android:contentDescription="Status cahaya"
+                    app:tint="@color/buddy_action" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Accelerometer Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Akselerometer"
+                    android:textSize="14sp"
+                    android:textColor="@color/buddy_sub"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- X axis -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="14dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sumbu X"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/buddy_ink"/>
+                        <TextView
+                            android:id="@+id/tv_accel_x"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="14sp"
+                            android:textColor="@color/buddy_ink"/>
+                    </LinearLayout>
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_accel_x"
+                        style="@style/Widget.Buddy.LinearProgressIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:max="20"
+                        android:progress="10"/>
+                </LinearLayout>
+
+                <!-- Y axis -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="14dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sumbu Y"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/buddy_ink"/>
+                        <TextView
+                            android:id="@+id/tv_accel_y"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="14sp"
+                            android:textColor="@color/buddy_ink"/>
+                    </LinearLayout>
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_accel_y"
+                        style="@style/Widget.Buddy.LinearProgressIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:max="20"
+                        android:progress="10"/>
+                </LinearLayout>
+
+                <!-- Z axis -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sumbu Z"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/buddy_ink"/>
+                        <TextView
+                            android:id="@+id/tv_accel_z"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9.80"
+                            android:textSize="14sp"
+                            android:textColor="@color/buddy_ink"/>
+                    </LinearLayout>
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_accel_z"
+                        style="@style/Widget.Buddy.LinearProgressIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:max="20"
+                        android:progress="10"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Gyroscope Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giroskop"
+                    android:textSize="14sp"
+                    android:textColor="@color/buddy_sub"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Rotasi X -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Rotasi X"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_gyro_x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00 rad/s"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_ink"/>
+                </LinearLayout>
+
+                <!-- Rotasi Y -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Rotasi Y"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_gyro_y"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00 rad/s"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_ink"/>
+                </LinearLayout>
+
+                <!-- Rotasi Z -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Rotasi Z"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_gyro_z"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00 rad/s"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_ink"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Hardware & Custom Sensors Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fitur perangkat keras"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/buddy_ink"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- IR Blaster -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Status pemancar IR"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_ir_blaster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Memeriksa..."
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_action"/>
+                </LinearLayout>
+
+                <!-- Flicker sensor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sensor kedip (Flicker)"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_flicker_sensor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Memeriksa..."
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_action"/>
+                </LinearLayout>
+
+                <!-- Battery Temperature -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Suhu baterai (Sensor)"
+                        android:textSize="14sp"
+                        android:textColor="@color/buddy_sub"/>
+                    <TextView
+                        android:id="@+id/tv_battery_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-- °C"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/buddy_ink"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

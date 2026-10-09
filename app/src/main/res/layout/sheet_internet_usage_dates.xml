@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:background="@color/buddy_tile">
+    <LinearLayout style="@style/Buddy.Panel" android:paddingTop="24dp">
+        <TextView style="@style/Buddy.Title" android:text="@string/internet_settings_dates" />
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Buddy.TextInputLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="@string/internet_cycle_start_input">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/input_cycle_start" style="@style/Widget.Buddy.TextInputEditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:minHeight="56dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView style="@style/Buddy.Label" android:layout_marginTop="4dp" android:text="@string/internet_cycle_start_info" />
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Buddy.TextInputLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="@string/internet_target_days_input">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/input_target_days" style="@style/Widget.Buddy.TextInputEditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:minHeight="56dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView style="@style/Buddy.Label" android:layout_marginTop="4dp" android:text="@string/internet_target_days_info" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_save_dates" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="12dp" android:text="@string/internet_save" app:icon="@drawable/ic_ms_save" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_dates_cancel" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="8dp" android:text="@string/internet_cancel" app:icon="@drawable/ic_ms_close" />
+    </LinearLayout>
+</ScrollView>

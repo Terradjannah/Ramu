@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/buddy_stage"
+    android:theme="@style/ThemeOverlay.Buddy.Surface">
+
+    <com.assistant.adi.ui.buddy.BuddyContentColumn
+        style="@style/Buddy.Panel"
+        android:layout_gravity="center_horizontal">
+
+        <!-- Model Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard"
+            app:cardBackgroundColor="@color/buddy_tile">
+
+            <LinearLayout style="@style/Buddy.Panel">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Informasi Model" />
+                    <ImageButton android:id="@+id/btn_model_details_info" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Rincian model Gemma" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Catatan: Kamu perlu menyetujui Lisensi Gemma di Hugging Face sebelum mengunduh model ini."
+                    android:textSize="12sp"
+                    android:textColor="@color/buddy_warning"
+                    android:layout_marginTop="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_license"
+                    style="@style/Widget.Buddy.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Buka Halaman Lisensi Gemma"
+                    android:layout_marginTop="4dp" app:icon="@drawable/ic_ms_chevron_right"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- HuggingFace Token Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_hf_token"
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout style="@style/Buddy.Panel">
+
+                <TextView
+                    style="@style/Buddy.Title"
+                    android:text="Akses Hugging Face" />
+
+                <TextView
+                    style="@style/Buddy.Label"
+                    android:text="Dapatkan token tipe READ di huggingface.co/settings/tokens"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_token_input"
+                    style="@style/Widget.Buddy.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hugging Face Read Token"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_hf_token"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="end">
+                    
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_delete_token"
+                        style="@style/Widget.Buddy.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Hapus token"
+                        android:textColor="@color/buddy_danger" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_delete" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_save_token"
+                        style="@style/Widget.Buddy.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Simpan token"
+                        android:layout_marginStart="8dp" app:icon="@drawable/ic_ms_save"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Storage Check Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout style="@style/Buddy.Panel">
+
+                <TextView
+                    style="@style/Buddy.Title"
+                    android:text="Pengecekan Ruang Penyimpanan" />
+
+                <TextView
+                    android:id="@+id/tv_storage_available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tersedia: -- GB"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/buddy_action"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_storage_warning"
+                    style="@style/Buddy.Label"
+                    android:text="Peringatan: Pastikan penyimpanan Anda memiliki lebih dari 6 GB ruang kosong sebelum mengunduh."
+                    android:textColor="@color/buddy_danger"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Download Action Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard">
+
+            <LinearLayout style="@style/Buddy.Panel">
+
+                <TextView
+                    style="@style/Buddy.Title"
+                    android:text="Kontrol Unduhan"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Progress Section (visible when downloading/paused) -->
+                <LinearLayout
+                    android:id="@+id/layout_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_download"
+                        style="@style/Widget.Buddy.LinearProgressIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp">
+                        
+                        <TextView
+                            android:id="@+id/tv_download_bytes"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="0.00 GB / 4.92 GB"
+                            android:textSize="12sp"
+                            android:textColor="@color/buddy_sub"/>
+
+                        <TextView
+                            android:id="@+id/tv_download_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/buddy_action"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:id="@+id/tv_download_speed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Kecepatan: -- MB/s"
+                            android:textSize="12sp"
+                            android:textColor="@color/buddy_sub"/>
+
+                        <TextView
+                            android:id="@+id/tv_download_eta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ETA: --"
+                            android:textSize="12sp"
+                            android:textColor="@color/buddy_sub"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Action Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_download_action"
+                    style="@style/Widget.Buddy.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unduh model" app:icon="@drawable/ic_ms_download" />
+
+                <!-- Extra controls while downloading -->
+                <LinearLayout
+                    android:id="@+id/layout_download_controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_pause_resume"
+                        style="@style/Widget.Buddy.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Jeda"
+                        android:layout_marginEnd="4dp" app:icon="@drawable/ic_ms_pause"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_cancel_download"
+                        style="@style/Widget.Buddy.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Batal"
+                        android:textColor="@color/buddy_danger"
+                        app:strokeColor="@color/buddy_danger"
+                        android:layout_marginStart="4dp" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_close"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Delete Model Card (visible only when completed) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_delete_model"
+            style="@style/Widget.Buddy.SurfaceCard"
+            android:visibility="gone">
+
+            <LinearLayout style="@style/Buddy.Panel">
+
+                <TextView
+                    style="@style/Buddy.Title"
+                    android:text="Hapus Model" />
+
+                <TextView
+                    style="@style/Buddy.Label"
+                    android:text="Menghapus model Gemma akan membebaskan sekitar 4.92 GB ruang penyimpanan HP."
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete_model"
+                    style="@style/Widget.Buddy.Button.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hapus file model Gemma"
+                    android:textColor="@color/buddy_danger" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_delete" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

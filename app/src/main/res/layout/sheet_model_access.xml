@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tv_sheet_title"
+            style="@style/Buddy.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Akses unduhan" />
+
+        <TextView
+            android:id="@+id/tv_sheet_description"
+            style="@style/Buddy.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_open_license"
+            style="@style/Widget.Buddy.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lisensi model" app:icon="@drawable/ic_ms_chevron_right" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_token_input"
+            style="@style/Widget.Buddy.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Hugging Face read token"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_hf_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:minHeight="56dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_open_hf_tokens"
+            style="@style/Widget.Buddy.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buka Hugging Face Tokens" app:icon="@drawable/ic_ms_chevron_right" />
+
+        <LinearLayout
+            android:id="@+id/layout_access_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_token"
+                style="@style/Widget.Buddy.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hapus token"
+                android:textColor="@color/buddy_danger" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_delete" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_token"
+                style="@style/Widget.Buddy.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Simpan" app:icon="@drawable/ic_ms_save" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_ram_summary" style="@style/Widget.Buddy.SurfaceCard" app:cardBackgroundColor="@color/buddy_lilac">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView style="@style/Buddy.Label" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Ruang kerja sementara HP" />
+                    <ImageButton android:id="@+id/btn_ram_summary_info" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi bacaan RAM" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_ram_percent" style="@style/Buddy.Value" android:text="Membaca RAM…" />
+                <TextView style="@style/Buddy.Label" android:text="Dipakai" />
+                <TextView android:id="@+id/tv_ram_used" style="@style/Buddy.Title" android:text="Menunggu bacaan Android" />
+                <LinearLayout android:id="@+id/ram_facts" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Buddy.Label" android:text="Tersedia" />
+                        <TextView android:id="@+id/tv_ram_available" style="@style/Buddy.Title" android:text="Belum tersedia" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Buddy.Label" android:text="Total" />
+                        <TextView android:id="@+id/tv_ram_total" style="@style/Buddy.Title" android:text="Belum tersedia" />
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progress_ram" android:layout_width="match_parent" android:layout_height="wrap_content" app:trackThickness="10dp" app:trackCornerRadius="5dp" app:indicatorColor="@color/buddy_chart_lilac" app:trackColor="@color/buddy_tile" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_ram_settings" style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="Batas RAM" />
+                <TextView android:id="@+id/tv_ram_threshold_status" style="@style/Buddy.Label" android:text="Menunggu bacaan RAM." android:layout_marginBottom="8dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_ram_threshold" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Atur batas RAM" app:icon="@drawable/ic_ms_tune" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_cpu_info" style="@style/Widget.Buddy.SurfaceCard" android:visibility="gone">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="CPU dan sistem" />
+                <TextView android:id="@+id/tv_cpu_usage" style="@style/Buddy.Label" android:text="Membaca beban CPU…" />
+                <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progress_cpu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginVertical="12dp" android:visibility="gone" app:indicatorColor="@color/buddy_action" app:trackColor="@color/buddy_divider" app:trackThickness="8dp" app:trackCornerRadius="4dp" />
+                <TextView android:id="@+id/tv_cpu_temp" style="@style/Buddy.Title" android:text="Membaca sensor…" />
+                <TextView android:id="@+id/tv_wakelocks" style="@style/Buddy.Label" android:text="Membaca aktivitas sistem…" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <include android:id="@+id/history_panel" layout="@layout/view_monitor_history" />
+        <LinearLayout android:id="@+id/panel_ram_chart" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Pemakaian RAM · 24 jam" />
+                    <ImageButton android:id="@+id/btn_ram_chart_info" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi grafik RAM" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <com.github.mikephil.charting.charts.LineChart android:id="@+id/ram_chart" android:layout_width="match_parent" android:layout_height="220dp" />
+                <TextView android:id="@+id/tv_ram_chart_selection" style="@style/Buddy.Label" android:layout_marginTop="8dp" android:text="Pilih titik untuk rincian catatan." />
+        </LinearLayout>
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

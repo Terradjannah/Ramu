@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:gravity="center_vertical">
+
+
+    <ImageView
+        android:id="@+id/iv_app_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Name"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/buddy_ink"/>
+
+        <TextView
+            android:id="@+id/tv_usage_and_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hari ini: 45 menit · batas: 60 menit"
+            android:textSize="12sp"
+            android:textColor="@color/buddy_sub"
+            android:layout_marginTop="2dp" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_limit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:indicatorColor="@color/buddy_action"
+            app:trackColor="@color/buddy_divider"
+            app:trackCornerRadius="2dp"
+            app:trackThickness="4dp"
+            android:max="100"
+            android:progress="75"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btn_edit_limit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_ms_edit"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Atur batas aplikasi"
+        app:tint="@color/buddy_action"
+        android:layout_marginStart="16dp"/>
+
+</LinearLayout>

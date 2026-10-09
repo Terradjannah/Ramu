@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:fillViewport="true" android:background="@color/buddy_tile">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+            <ImageView android:id="@+id/iv_limit_app_icon" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="@null" android:importantForAccessibility="no" />
+            <TextView android:id="@+id/tv_limit_app_name" style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:maxLines="2" />
+        </LinearLayout>
+        <TextView android:id="@+id/tv_current_app_limit" style="@style/Buddy.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
+        <TextView style="@style/Buddy.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:layout_marginBottom="8dp" android:text="Pilihan cepat" />
+        <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/group_limit_presets" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="false">
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_limit_15" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="15" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_limit_30" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="30" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_limit_60" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="60" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_limit_120" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="120" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/input_limit_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:hint="Batas harian (menit)" app:boxBackgroundMode="outline">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/input_limit_minutes" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:maxLines="1" android:imeOptions="actionDone" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_save_app_limit" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:minHeight="52dp" android:text="Simpan" app:icon="@drawable/ic_ms_save" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_delete_app_limit" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:minHeight="48dp" android:text="Hapus batas" app:icon="@drawable/ic_ms_delete" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_cancel_app_limit" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:minHeight="48dp" android:text="Batal" app:icon="@drawable/ic_ms_close" />
+    </LinearLayout>
+</ScrollView>

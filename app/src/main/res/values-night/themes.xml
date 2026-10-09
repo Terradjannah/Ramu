@@ -1,0 +1,37 @@
+<resources>
+    <style name="Theme.AssistantAdi" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/buddy_action</item>
+        <item name="colorOnPrimary">@color/buddy_on_action</item>
+        <item name="colorOnSurface">@color/buddy_stage_ink</item>
+        <item name="colorOnSurfaceVariant">@color/buddy_stage_sub</item>
+        <item name="colorSecondary">@color/buddy_action</item>
+        <item name="colorOnSecondary">@color/buddy_on_action</item>
+        <item name="android:windowBackground">@color/buddy_stage</item>
+        <item name="colorSurface">@color/buddy_stage</item>
+        <item name="colorSurfaceVariant">@color/buddy_surface_muted</item>
+        <item name="colorSurfaceContainer">@color/buddy_tile</item>
+        <item name="colorSurfaceContainerHigh">@color/buddy_surface_muted</item>
+        <item name="colorSecondaryContainer">@color/buddy_selection</item>
+        <item name="colorOnSecondaryContainer">@color/buddy_ink</item>
+        <item name="colorOutline">@color/buddy_outline</item>
+        <item name="colorError">@color/buddy_danger</item>
+        <item name="android:textColorPrimary">@color/buddy_stage_ink</item>
+        <item name="android:textColorSecondary">@color/buddy_stage_sub</item>
+        <item name="android:statusBarColor">@color/buddy_stage</item>
+        <item name="android:navigationBarColor">@color/buddy_stage</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="materialButtonStyle">@style/Widget.Buddy.Button</item>
+        <item name="borderlessButtonStyle">@style/Widget.Buddy.StageTextButton</item>
+        <item name="toolbarStyle">@style/Widget.Buddy.Toolbar</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Buddy.OutlinedButton</item>
+        <item name="materialCardViewStyle">@style/Widget.Buddy.Card</item>
+        <item name="textInputStyle">@style/Widget.Buddy.TextInputLayout</item>
+        <item name="editTextStyle">@style/Widget.Buddy.TextInputEditText</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Buddy.LinearProgressIndicator</item>
+        <item name="circularProgressIndicatorStyle">@style/Widget.Buddy.CircularProgressIndicator</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Buddy.Dialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.Buddy.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Buddy.BottomSheetDialog</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+</resources>

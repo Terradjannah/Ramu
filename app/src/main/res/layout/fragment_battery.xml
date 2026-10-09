@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_power" style="@style/Widget.Buddy.SurfaceCard" app:cardBackgroundColor="@color/buddy_mint">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView style="@style/Buddy.Label" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Bacaan baterai langsung" />
+                    <ImageButton android:id="@+id/btn_battery_reading_info" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi bacaan baterai" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_battery_pct" style="@style/Buddy.Value" android:text="Belum ada catatan" />
+                <TextView android:id="@+id/tv_battery_status" style="@style/Buddy.Title" android:text="Menunggu catatan baterai" />
+                <TextView style="@style/Buddy.Label" android:text="Suhu baterai" android:layout_marginTop="12dp" />
+                <TextView android:id="@+id/tv_battery_temp" style="@style/Buddy.Title" android:text="Suhu belum tersedia" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_reminder" style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="Pengingat baterai" />
+                <TextView android:id="@+id/tv_battery_low_reminder" style="@style/Buddy.Label" android:text="Membaca batas pengingat…" android:layout_marginBottom="8dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_low_reminder" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Atur batas baterai" app:icon="@drawable/ic_ms_tune" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <LinearLayout android:id="@+id/panel_chart" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView android:id="@+id/tv_battery_chart_title" style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Perubahan baterai · 24 jam" />
+                    <ImageButton android:id="@+id/btn_battery_chart_info" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi grafik baterai" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/toggle_battery_range" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:singleSelection="true" app:selectionRequired="true">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_range_24h" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="24 jam" app:icon="@drawable/ic_ms_today" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_range_7d" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="7 hari" android:visibility="gone" app:icon="@drawable/ic_ms_date_range" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_range_30d" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="30 hari" android:visibility="gone" app:icon="@drawable/ic_ms_date_range" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+                <TextView android:id="@+id/tv_battery_range_coverage" style="@style/Buddy.Label" android:layout_marginTop="4dp" android:text="Memuat rentang catatan…" />
+                <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/toggle_battery_series" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:singleSelection="true" app:selectionRequired="true">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_power" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="Daya" app:icon="@drawable/ic_battery" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_battery_temperature" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="Suhu" app:icon="@drawable/ic_sensors" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+                <com.github.mikephil.charting.charts.LineChart android:id="@+id/battery_chart" android:layout_width="match_parent" android:layout_height="220dp" android:layout_marginTop="12dp" />
+                <TextView android:id="@+id/tv_battery_chart_selection" style="@style/Buddy.Label" android:layout_marginTop="8dp" android:text="Pilih titik untuk rincian catatan." />
+        </LinearLayout>
+        <include android:id="@+id/history_panel" layout="@layout/view_monitor_history" />
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_sessions" style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_sessions_disclosure" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="Sesi pengisian, tampilkan" app:icon="@drawable/ic_ms_expand_more" />
+                <LinearLayout android:id="@+id/sessions_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <TextView android:id="@+id/tv_sessions_empty" style="@style/Buddy.Label" android:text="Belum ada sesi pengisian yang tercatat." />
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_charge_sessions" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

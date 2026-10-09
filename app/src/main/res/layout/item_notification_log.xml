@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Buddy.SurfaceCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- App Name Tag -->
+            <TextView
+                android:id="@+id/tv_notif_app_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="System App"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_action"/>
+
+            <!-- Post Time -->
+            <TextView
+                android:id="@+id/tv_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:34 AM"
+                android:textSize="12sp"
+                android:textColor="@color/buddy_sub"/>
+        </LinearLayout>
+
+        <!-- Notification Title -->
+        <TextView
+            android:id="@+id/tv_notif_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification Title"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/buddy_ink"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Notification Content Text -->
+        <TextView
+            android:id="@+id/tv_notif_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detailed content of the logged notification message goes here."
+            android:textSize="13sp"
+            android:textColor="@color/buddy_sub"
+            android:layout_marginTop="4dp"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

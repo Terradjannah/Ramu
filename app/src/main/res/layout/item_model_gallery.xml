@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_model"
+    style="@style/Widget.Buddy.SurfaceCard"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        style="@style/Buddy.Panel"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_model_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/buddy_action"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_model_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gemma 3n E2B"
+                    android:textColor="@color/buddy_ink"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_model_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unduhan 2.1 GB"
+                    android:textColor="@color/buddy_sub"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_model_info"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Informasi model"
+                android:tooltipText="Informasi model"
+                app:icon="@drawable/ic_ms_info"
+                app:iconSize="24dp"
+                app:iconTint="@color/buddy_action_text_selector"
+                app:backgroundTint="@android:color/transparent" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_model_status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Belum diunduh"
+            android:textColor="@color/buddy_sub"
+            android:drawablePadding="8dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_model_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/buddy_sub"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_model_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_model_download"
+                style="@style/Widget.Buddy.LinearProgressIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100" />
+
+            <TextView
+                android:id="@+id/tv_download_bytes_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="0 MB / 2.1 GB"
+                android:textColor="@color/buddy_sub"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_download_percent_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Persentase unduhan"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_download_speed_eta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/buddy_sub"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_model_actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_action_primary"
+                    style="@style/Widget.Buddy.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unduh" app:icon="@drawable/ic_ms_download" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_action_pause"
+                    style="@style/Widget.Buddy.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Jeda"
+                    android:visibility="gone"
+                    tools:visibility="visible" app:icon="@drawable/ic_ms_pause" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_action_cancel"
+                    style="@style/Widget.Buddy.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Batalkan"
+                    android:textColor="@color/buddy_danger"
+                    app:strokeColor="@color/buddy_danger"
+                    android:visibility="gone"
+                    tools:visibility="visible" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_close" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_action_delete"
+                style="@style/Widget.Buddy.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:gravity="end|center_vertical"
+                android:text="Hapus file"
+                app:icon="@drawable/ic_ms_delete"
+                app:iconTint="@color/buddy_danger"
+                android:textColor="@color/buddy_danger"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

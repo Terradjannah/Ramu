@@ -1,0 +1,14 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <inset android:inset="6dp"><shape android:shape="rectangle"><solid android:color="@color/buddy_disabled_container" /><corners android:radius="12dp" /></shape></inset>
+    </item>
+    <item android:state_focused="true">
+        <inset android:inset="6dp"><shape android:shape="rectangle"><solid android:color="@color/buddy_surface_muted" /><stroke android:width="2dp" android:color="@color/buddy_stage_focus" /><corners android:radius="12dp" /></shape></inset>
+    </item>
+    <item android:state_pressed="true">
+        <inset android:inset="6dp"><shape android:shape="rectangle"><solid android:color="@color/buddy_selection" /><corners android:radius="12dp" /></shape></inset>
+    </item>
+    <item>
+        <inset android:inset="6dp"><shape android:shape="rectangle"><solid android:color="@color/buddy_surface_muted" /><corners android:radius="12dp" /></shape></inset>
+    </item>
+</selector>

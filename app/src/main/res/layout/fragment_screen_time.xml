@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <LinearLayout android:id="@+id/panel_screen_summary" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard" app:cardBackgroundColor="@color/buddy_sky">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/screen_today_title" />
+                    <ImageButton android:id="@+id/btn_screen_today_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:tint="@color/buddy_action_text_selector" android:contentDescription="Informasi waktu layar hari ini" android:src="@drawable/ic_ms_info" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_total_screen_time" style="@style/Buddy.Value" android:text="Membaca…" />
+                <TextView android:id="@+id/tv_screen_time_subtitle" style="@style/Buddy.Label" android:text="Membaca waktu layar dari Android…" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_usage_access" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="Atur akses penggunaan" android:layout_marginTop="12dp" android:visibility="gone" app:icon="@drawable/ic_ms_shield" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView android:id="@+id/tv_screen_time_chart_title" style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/screen_chart_title" />
+                    <ImageButton android:id="@+id/btn_chart_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:tint="@color/buddy_action_text_selector" android:contentDescription="Informasi grafik waktu layar" android:src="@drawable/ic_ms_info" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <ImageButton android:id="@+id/btn_chart_bars" style="@style/Widget.Buddy.IconButton" android:contentDescription="Diagram batang" android:src="@drawable/ic_ms_bar_chart" />
+                    <ImageButton android:id="@+id/btn_chart_heatmap" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:contentDescription="Heatmap per jam" android:src="@drawable/ic_ms_grid_view" />
+                </LinearLayout>
+                <LinearLayout android:id="@+id/chart_bars_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:id="@+id/tv_screen_time_chart_summary" style="@style/Buddy.Label" android:layout_marginTop="4dp" />
+                <com.github.mikephil.charting.charts.BarChart android:id="@+id/screen_time_chart" android:layout_width="match_parent" android:layout_height="220dp" android:layout_marginTop="12dp" />
+                <TextView android:id="@+id/tv_screen_time_chart_selected" style="@style/Buddy.Label" android:layout_marginTop="8dp" />
+                </LinearLayout>
+                <LinearLayout android:id="@+id/chart_heatmap_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_heatmap_range" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" app:icon="@drawable/ic_ms_date_range" android:text="30 hari terakhir" />
+                    <TextView android:id="@+id/tv_heatmap_range" style="@style/Buddy.Label" />
+                    <TextView style="@style/Buddy.Label" android:text="Skala: 0 · 15 · 30 · 45 · 60 menit" android:layout_marginTop="8dp" />
+                    <GridLayout android:id="@+id/grid_heatmap" android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="6" android:alignmentMode="alignBounds" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="@string/screen_apps_today" />
+                <TextView android:id="@+id/tv_today_apps_empty" style="@style/Buddy.Label" android:text="Membaca daftar aplikasi…" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_today_apps" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_today_apps_expand" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:visibility="gone" app:icon="@drawable/ic_ms_expand_more" android:text="Lihat semua aplikasi" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/panel_screen_limits" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="Pemakaian &amp; batas aplikasi" />
+                <TextView style="@style/Buddy.Label" android:text="Ketuk aplikasi untuk mengubah batas waktu pribadi." android:layout_marginBottom="12dp" />
+                <TextView android:id="@+id/tv_apps_empty" style="@style/Buddy.Label" android:text="Membaca daftar aplikasi…" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_app_limits" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/panel_screen_history" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+        <include android:id="@+id/history_panel" layout="@layout/view_monitor_history" />
+        </LinearLayout>
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

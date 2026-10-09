@@ -1,0 +1,22 @@
+<resources>
+    <color name="buddy_stage">#DDE5DF</color>
+    <color name="buddy_stage_ink">#24332F</color>
+    <color name="buddy_stage_sub">#46564E</color>
+    <color name="buddy_stage_button">#FFFFFF</color>
+    <color name="buddy_stage_button_outline">#65717B</color>
+    <color name="buddy_stage_focus">#28634D</color>
+    <color name="buddy_stage_action">#28634D</color>
+    <color name="buddy_stage_warning">#80502A</color>
+    <color name="buddy_stage_danger">#973C4B</color>
+    <color name="buddy_tile">#FFFFFF</color>
+    <color name="buddy_ink">#24332F</color>
+    <color name="buddy_sub">#46564E</color>
+    <color name="buddy_mint">#AFD3B9</color>
+    <color name="buddy_mint_fill">#D8EBDE</color>
+    <color name="buddy_peach">#EAC7A9</color>
+    <color name="buddy_peach_fill">#F5E6D8</color>
+    <color name="buddy_lilac">#D0BFE4</color>
+    <color name="buddy_lilac_fill">#EDE4F4</color>
+    <color name="buddy_sky">#B6D3E4</color>
+    <color name="buddy_sky_fill">#DCEBF4</color>
+</resources>

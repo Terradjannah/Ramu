@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_latest_message">Pesan terbaru</string>
+    <string name="model_download_size">Unduhan %1$s</string>
+    <string name="model_info_accessibility">Informasi %1$s</string>
+    <string name="model_deleting">Menghapus model…</string>
+    <string name="model_not_downloaded">Belum diunduh</string>
+    <string name="model_download">Unduh</string>
+    <string name="model_download_progress">%1$s dari %2$s · %3$d%%</string>
+    <string name="model_download_rate">%1$.2f MB/s · sisa %2$s</string>
+    <string name="model_downloading">Sedang diunduh</string>
+    <string name="model_pause">Jeda</string>
+    <string name="model_resume">Lanjutkan</string>
+    <string name="model_paused">Unduhan dijeda</string>
+    <string name="model_installed_size">Tersimpan %1$s</string>
+    <string name="model_selected">Dipilih</string>
+    <string name="model_active">Model aktif</string>
+    <string name="model_chooser_active">Sedang digunakan</string>
+    <string name="model_chooser_unavailable">Belum tersedia di perangkat. Kelola model untuk mengunduhnya.</string>
+    <string name="model_ready">Siap digunakan</string>
+    <string name="model_use">Gunakan</string>
+    <string name="model_retry">Coba lagi</string>
+    <string name="model_chat_requires_download">Unduh model untuk membuka chat</string>
+    <string name="model_open_chat">Buka chat</string>
+    <string name="model_access_title">Akses unduhan</string>
+    <string name="model_access_description">Masukkan token Hugging Face untuk memverifikasi dan mengunduh %1$s (%2$s). Token disimpan di perangkat.</string>
+    <string name="model_info_description">%1$s\n\nPerkiraan penggunaan RAM: %2$s\nBackend: %3$s</string>
+    <string name="model_open_license">Lisensi %1$s</string>
+    <string name="model_token_required">Token tidak boleh kosong</string>
+    <string name="model_token_saved">Token disimpan di perangkat.</string>
+    <string name="model_open_link_failed">Tautan tidak dapat dibuka.</string>
+    <string name="model_storage_warning">Ruang tersedia kurang dari 5 GB. Ketuk untuk melihat kebutuhan E4B.</string>
+    <string name="app_name">Ramu</string>
+    
+    <!-- Navigation Drawer Labels -->
+    <string name="menu_battery">Battery Monitor</string>
+    <string name="menu_ram_cpu">RAM &amp; CPU Monitor</string>
+    <string name="menu_screen_time">Screen Time Tracker</string>
+    <string name="screen_today_title">Hari ini</string>
+    <string name="screen_chart_title">Total pemakaian aplikasi · 7 hari</string>
+    <string name="screen_heatmap_title">Pola waktu layar per jam</string>
+    <string name="screen_apps_today">Aplikasi hari ini</string>
+    <string name="screen_today_explanation">Durasi layar aktif dan terbuka dibaca langsung dari Android. Total aplikasi dapat berbeda karena dihitung dari pemakaian aplikasi. Membuka halaman ini tidak membuat sampel riwayat baru.</string>
+    <string name="screen_chart_explanation">Diagram batang menampilkan total pemakaian aplikasi tersimpan untuk tujuh tanggal terakhir; tanggal tanpa catatan bukan nol. Heatmap menampilkan rata-rata durasi per jam dari catatan yang memiliki cakupan. Rentang awal 30 hari terakhir dan dapat diganti, termasuk satu hari. Warna memakai 13 tingkat: 0–&lt;5, 5–&lt;10, 10–&lt;15, 15–&lt;20, 20–&lt;25, 25–&lt;30, 30–&lt;35, 35–&lt;40, 40–&lt;45, 45–&lt;50, 50–&lt;55, 55–&lt;60, dan 60 menit atau lebih. Sel tanpa cakupan ditandai belum ada data. Warna mencapai tingkat tertinggi pada 60 menit, sementara angka tetap menunjukkan nilai sebenarnya.</string>
+    <string name="menu_network">Network Monitor</string>
+    <string name="menu_sensors">Sensor Monitor</string>
+    <string name="menu_notifications">Notification Log</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_ai_assistant">Chat AI</string>
+    <string name="menu_model_gallery">Galeri Model AI</string>
+    
+    <!-- Widget Labels -->
+    <string name="widget_title_2x2">Ramu 2x2</string>
+    <string name="widget_desc_2x2">Compact dashboard widget showing key battery and network parameters.</string>
+    <string name="widget_title_4x2">Ramu 4x2</string>
+    <string name="widget_desc_4x2">Medium dashboard widget showing battery, RAM, network and screen time.</string>
+    <string name="widget_title_4x4">Ramu 4x4</string>
+    <string name="widget_desc_4x4">Full dashboard widget showing detailed device status metrics.</string>
+    
+    <!-- Settings Labels -->
+    <string name="settings_battery_threshold">Ingatkan saat baterai di bawah (%)</string>
+    <string name="settings_ram_threshold">Batas RAM tersedia (MB)</string>
+    <string name="settings_ping_threshold">Batas waktu respons jaringan (ms)</string>
+    <string name="settings_refresh_title">Jadwal pencatatan</string>
+    <string name="settings_refresh_desc">Pilih seberapa sering catatan diperbarui. Minimal 15 menit agar hemat daya; Android dapat menunda jadwal.</string>
+    <string name="settings_export_csv">Export Data to CSV</string>
+    <string name="settings_backup">Local Backup &amp; Restore</string>
+    <string name="settings_dark_mode">Mode gelap</string>
+    <string name="settings_autoclear_notif">Hapus log notifikasi setelah (hari)</string>
+
+    <!-- Permission Dialogs -->
+    <string name="permission_usage_title">Usage Stats Permission Required</string>
+    <string name="permission_usage_desc">This app requires usage stats access to monitor screen time and individual app usage. Please enable it in the next screen.</string>
+    <string name="permission_notification_title">Notification Access Required</string>
+    <string name="permission_notification_desc">This app logs incoming notifications. Please grant Notification Access in the settings to enable this feature.</string>
+    <string name="internet_today">Hari ini</string>
+    <string name="internet_monthly">Bulanan</string>
+    <string name="internet_chart_title">Pemakaian harian</string>
+    <string name="internet_today_info">Informasi pemakaian hari ini</string>
+    <string name="internet_monthly_info">Informasi pemakaian bulanan</string>
+    <string name="internet_chart_info">Informasi grafik pemakaian harian</string>
+    <string name="internet_limit_reached">Batas tercapai</string>
+    <string name="internet_set_limit">Atur batas</string>
+    <string name="internet_today_explanation">Total hari ini hanya tersedia ketika Wi-Fi dan seluler terukur. Angka hari ini masih dapat bertambah; nol terukur berbeda dari data yang belum tersedia. Batas harian berasal dari target bulanan dibagi jumlah hari pemakaian.</string>
+    <string name="internet_monthly_explanation">Periode bulanan mengikuti tanggal mulai yang diatur, termasuk penyesuaian tanggal 29–31 pada bulan pendek. Total bulanan hanya tersedia jika setiap hari sejak awal periode memiliki kedua transport. Nilai transport yang lengkap dapat ditampilkan meskipun total belum lengkap.</string>
+    <string name="internet_chart_explanation">Setiap posisi menunjukkan tanggal pada kalender. Batang bertumpuk memperlihatkan Wi-Fi dan seluler dalam GB desimal; tanggal tanpa kedua transport tetap menyisakan posisi kosong. Ketuk batang untuk melihat rinciannya. Pilihan rentang hanya mengubah grafik.</string>
+    <string name="internet_settings_info">Informasi pengaturan internet</string>
+    <string name="internet_settings_explanation">Target bulanan menentukan batas periode. Tanggal mulai menentukan awal periode bulanan, sedangkan jumlah hari pemakaian menentukan batas harian. Menghapus target tidak menghapus riwayat.</string>
+    <string name="internet_settings_budget">Atur batas penggunaan data</string>
+    <string name="internet_settings_dates">Atur siklus dan hari pemakaian</string>
+    <string name="internet_budget_unset">Belum diatur</string>
+    <string name="internet_budget_input">Target bulanan (GB)</string>
+    <string name="internet_cycle_start_input">Tanggal mulai bulanan (1–31)</string>
+    <string name="internet_target_days_input">Jumlah hari pemakaian (1–31 hari)</string>
+    <string name="internet_cycle_start_info">Tanggal ini menentukan awal periode bulanan. Jika tanggalnya tidak ada, digunakan tanggal terakhir bulan tersebut.</string>
+    <string name="internet_target_days_info">Target bulanan dibagi jumlah hari ini untuk menentukan batas harian.</string>
+    <string name="internet_clear_target">Hapus target</string>
+    <string name="internet_save">Simpan</string>
+    <string name="internet_cancel">Batal</string>
+    <string name="network_connection_title">Koneksi perangkat</string>
+    <string name="network_ping_title">Tes ping</string>
+    <string name="network_ping_hint">Pilih tujuan untuk memeriksa waktu respons koneksi.</string>
+    <string name="network_ping_idle">Belum diuji</string>
+    <string name="network_ping_running">Menguji…</string>
+    <string name="network_ping_normal">Normal</string>
+    <string name="network_ping_slow">Melebihi batas</string>
+    <string name="network_ping_timeout">Tidak merespons</string>
+    <string name="network_ping_error">Tes gagal</string>
+    <string name="network_ping_latency">%1$d ms</string>
+    <string name="network_ping_threshold">Batas respons: %1$d ms</string>
+    <string name="network_ping_threshold_placeholder">Batas respons</string>
+    <string name="network_ping_edit_threshold">Edit</string>
+    <string name="network_ping_test">Tes ping</string>
+    <string name="network_info">Data masuk/keluar per detik berasal dari perubahan counter trafik perangkat, bukan tes kecepatan. Tes ping dijalankan hanya saat diminta dan memeriksa waktu respons, bukan bandwidth. Timeout tidak selalu berarti internet terputus.\n%1$s</string>
+    <string name="network_info_source">Koneksi aktif dan laju trafik berasal dari Android ConnectivityManager dan TrafficStats. SSID/RSSI tersedia hanya bila Android memberi akses. Tujuan ping adalah alamat probe, bukan pengaturan DNS perangkat.</string>
+</resources>
+
+

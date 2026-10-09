@@ -1,0 +1,119 @@
+<resources>
+    <color name="buddy_action">#28634D</color>
+    <color name="buddy_on_action">#FFFFFF</color>
+    <color name="buddy_action_pressed">#1E4E3C</color>
+    <color name="buddy_disabled_container">#DFE5E0</color>
+    <color name="buddy_disabled_foreground">#65736A</color>
+    <color name="buddy_surface_muted">#E9F0EA</color>
+    <color name="buddy_hairline">#D3DDD7</color>
+    <color name="buddy_track">#DCE7E1</color>
+    <color name="buddy_warning">#80502A</color>
+    <color name="buddy_danger">#973C4B</color>
+    <color name="buddy_outline">#73867D</color>
+    <color name="buddy_divider">#85958C</color>
+    <color name="buddy_chart_blue">#35688A</color>
+    <color name="buddy_chart_lilac">#79568E</color>
+    <color name="buddy_selection">#DCE7E1</color>
+    <color name="buddy_danger_surface">#E9C2CB</color>
+    <dimen name="buddy_space_1">4dp</dimen>
+    <dimen name="buddy_space_2">8dp</dimen>
+    <dimen name="buddy_space_3">12dp</dimen>
+    <dimen name="buddy_space_4">16dp</dimen>
+    <dimen name="buddy_space_5">24dp</dimen>
+    <dimen name="buddy_space_6">32dp</dimen>
+    <dimen name="buddy_page_gutter">16dp</dimen>
+    <dimen name="buddy_card_padding">16dp</dimen>
+    <dimen name="buddy_card_radius">20dp</dimen>
+    <dimen name="buddy_control_radius">12dp</dimen>
+    <dimen name="buddy_sheet_radius">24dp</dimen>
+    <style name="ThemeOverlay.Buddy.Surface" parent="">
+        <item name="colorPrimary">@color/buddy_action</item>
+        <item name="colorOnPrimary">@color/buddy_on_action</item>
+        <item name="colorSecondary">@color/buddy_action</item>
+        <item name="colorOnSecondary">@color/buddy_on_action</item>
+        <item name="colorSurface">@color/buddy_stage</item>
+        <item name="colorSurfaceVariant">@color/buddy_surface_muted</item>
+        <item name="colorSurfaceContainer">@color/buddy_tile</item>
+        <item name="colorSurfaceContainerHigh">@color/buddy_surface_muted</item>
+        <item name="colorOnSurface">@color/buddy_ink</item>
+        <item name="colorOnSurfaceVariant">@color/buddy_sub</item>
+        <item name="colorOutline">@color/buddy_outline</item>
+        <item name="colorError">@color/buddy_danger</item>
+        <item name="android:textColorPrimary">@color/buddy_ink</item>
+        <item name="android:textColorSecondary">@color/buddy_sub</item>
+        <item name="android:colorBackground">@color/buddy_stage</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="materialCardViewStyle">@style/Widget.Buddy.SurfaceCard</item>
+        <item name="materialButtonStyle">@style/Widget.Buddy.ClayButton</item>
+        <item name="borderlessButtonStyle">@style/Widget.Buddy.SurfaceTextButton</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Buddy.OutlinedButton</item>
+        <item name="textInputStyle">@style/Widget.Buddy.TextInputLayout</item>
+        <item name="editTextStyle">@style/Widget.Buddy.TextInputEditText</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Buddy.LinearProgressIndicator</item>
+        <item name="circularProgressIndicatorStyle">@style/Widget.Buddy.CircularProgressIndicator</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Buddy.Dialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.Buddy.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Buddy.BottomSheetDialog</item>
+        <item name="colorSecondaryContainer">@color/buddy_selection</item>
+        <item name="colorOnSecondaryContainer">@color/buddy_ink</item>
+    </style>
+    <style name="Widget.Buddy.SurfaceCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/buddy_card_radius</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardBackgroundColor">@color/buddy_tile</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/buddy_space_3</item>
+    </style>
+    <style name="Widget.Buddy.ClayButton" parent="Widget.Buddy.Button">
+        <item name="backgroundTint">@color/buddy_button_primary_bg</item>
+        <item name="android:textColor">@color/buddy_button_primary_text</item>
+        <item name="iconTint">@color/buddy_button_primary_text</item>
+        <item name="cornerRadius">@dimen/buddy_control_radius</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/buddy_focus_ring</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="rippleColor">#30536B61</item>
+    </style>
+    <style name="Widget.Buddy.SurfaceTextButton" parent="Widget.Buddy.TextButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+    <style name="Buddy.Panel" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/buddy_card_padding</item>
+    </style>
+    <style name="Widget.Buddy.Variable" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="ensureMinTouchTargetSize">true</item>
+        <item name="chipMinTouchTargetSize">48dp</item>
+        <item name="chipBackgroundColor">@color/buddy_tile</item>
+        <item name="android:textColor">@color/buddy_ink</item>
+    </style>
+    <style name="Buddy.Label" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/buddy_sub</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+    <style name="Buddy.Title" parent="Buddy.Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/buddy_ink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:accessibilityHeading">true</item>
+    </style>
+    <style name="Buddy.Value" parent="Buddy.Label">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/buddy_ink</item>
+        <item name="android:layout_marginVertical">8dp</item>
+    </style>
+</resources>

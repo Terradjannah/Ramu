@@ -1,0 +1,51 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Buddy.SurfaceCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_stat_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YouTube"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_ink"/>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_stat_count"
+                style="@style/Widget.Buddy.LinearProgressIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                android:progress="45"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_stat_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45 notifikasi"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/buddy_action"
+            android:layout_marginStart="16dp"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel" android:orientation="vertical">
+                <TextView style="@style/Buddy.Label" android:text="Ruang tersedia" />
+                <TextView android:id="@+id/tv_storage_available" style="@style/Buddy.Value" android:text="Membaca…" />
+                <TextView android:id="@+id/tv_storage_totals" style="@style/Buddy.Label" android:text="Total dan terpakai belum tersedia" />
+                <LinearLayout android:id="@+id/storage_composition" android:layout_width="match_parent" android:layout_height="16dp" android:orientation="horizontal" android:layout_marginTop="16dp" />
+                <TextView android:id="@+id/tv_storage_legend" style="@style/Buddy.Label" android:text="Komposisi belum tersedia" android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_open_storage" style="@style/Widget.Buddy.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Buka penyimpanan Android" app:icon="@drawable/ic_ms_settings" />
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

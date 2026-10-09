@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Model untuk percakapan" />
+                    <ImageButton android:id="@+id/btn_model_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi model untuk percakapan" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_ai_model_status" style="@style/Buddy.Label" android:text="Belum ada model di HP. Buka Kelola model untuk menyiapkannya." android:visibility="gone" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/layout_model_selection" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model yang digunakan">
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/actv_model_selection" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_open_models" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="Kelola model" app:icon="@drawable/ic_ms_view_module" android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Gaya jawaban" />
+                    <ImageButton android:id="@+id/btn_answer_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi gaya jawaban" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <TextView android:id="@+id/lbl_temperature" style="@style/Buddy.Label" android:text="Variasi jawaban · 0,3" />
+                <com.google.android.material.slider.Slider android:id="@+id/slider_temperature" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="Temperature" android:valueFrom="0.0" android:valueTo="1.0" android:stepSize="0.1" android:value="0.3" />
+                <TextView android:id="@+id/lbl_max_tokens" style="@style/Buddy.Label" android:text="Batas panjang jawaban · 1024" />
+                <com.google.android.material.slider.Slider android:id="@+id/slider_max_tokens" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="Maksimum token keluaran" android:valueFrom="64.0" android:valueTo="2048.0" android:stepSize="64.0" android:value="1024.0" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Pemrosesan di HP" />
+                    <ImageButton android:id="@+id/btn_processing_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi pemrosesan di HP" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                </LinearLayout>
+                <RadioGroup android:id="@+id/rg_accelerator" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <RadioButton android:id="@+id/rb_auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="Otomatis (CPU)" android:textSize="15sp" />
+                    <RadioButton android:id="@+id/rb_cpu" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="CPU" android:textSize="15sp" />
+                    <RadioButton android:id="@+id/rb_gpu" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="GPU · belum tersedia" android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_advanced_ai" style="@style/Widget.Buddy.TextButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Atur instruksi &amp; parameter lanjutan" android:gravity="start|center_vertical" app:icon="@drawable/ic_buddy_chevron" app:iconGravity="end" />
+                <LinearLayout android:id="@+id/layout_advanced_ai" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                        <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Parameter lanjutan" />
+                        <ImageButton android:id="@+id/btn_runtime_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi parameter lanjutan" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/lbl_top_k" style="@style/Buddy.Label" android:text="Top K: 40" />
+                    <com.google.android.material.slider.Slider android:id="@+id/slider_top_k" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="Top K" android:valueFrom="1.0" android:valueTo="100.0" android:stepSize="1.0" android:value="40.0" />
+                    <TextView android:id="@+id/lbl_top_p" style="@style/Buddy.Label" android:text="Top P: 0,90" />
+                    <com.google.android.material.slider.Slider android:id="@+id/slider_top_p" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="Top P" android:valueFrom="0.05" android:valueTo="1.0" android:stepSize="0.05" android:value="0.9" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginTop="16dp">
+                        <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Instruksi untuk Buddy" />
+                        <ImageButton android:id="@+id/btn_prompt_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi instruksi untuk Buddy" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/layout_system_prompt" style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Instruksi asisten">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_system_prompt" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="3" android:maxLines="6" android:gravity="top" android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginTop="20dp">
+                        <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Konteks perangkat" />
+                        <ImageButton android:id="@+id/btn_context_help" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/buddy_icon_button_background" android:contentDescription="Informasi konteks perangkat" android:padding="12dp" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" />
+                    </LinearLayout>
+                    <com.google.android.material.chip.ChipGroup android:id="@+id/chip_group_variables" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleLine="false">
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_battery_pct" style="@style/Widget.Buddy.Variable" android:text="Baterai" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_battery_temp" style="@style/Widget.Buddy.Variable" android:text="Suhu baterai" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_charging_status" style="@style/Widget.Buddy.Variable" android:text="Pengisian" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_ram_used" style="@style/Widget.Buddy.Variable" android:text="RAM dipakai" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_ram_total" style="@style/Widget.Buddy.Variable" android:text="Total RAM" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_cpu_usage" style="@style/Widget.Buddy.Variable" android:text="Beban CPU" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_cpu_temp" style="@style/Widget.Buddy.Variable" android:text="Suhu CPU" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_screen_time" style="@style/Widget.Buddy.Variable" android:text="Waktu layar" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_network_type" style="@style/Widget.Buddy.Variable" android:text="Koneksi" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_network_speed" style="@style/Widget.Buddy.Variable" android:text="Lalu lintas" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_user_message" style="@style/Widget.Buddy.Variable" android:text="Pesan pengguna" />
+                    </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/layout_user_prompt" style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Template konteks" android:layout_marginTop="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_user_prompt_template" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="5" android:maxLines="10" android:gravity="top" android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_save_settings" style="@style/Widget.Buddy.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Simpan perubahan" app:icon="@drawable/ic_ms_save" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_reset_settings" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Kembalikan pengaturan bawaan" android:textColor="@color/buddy_danger" android:layout_marginTop="8dp" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_restart_alt" />
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

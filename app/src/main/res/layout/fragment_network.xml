@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard" app:cardBackgroundColor="@color/buddy_sky">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Label" android:text="@string/network_connection_title" />
+                <TextView android:id="@+id/tv_connection_type" style="@style/Buddy.Value" android:text="Membaca…" />
+                <LinearLayout android:id="@+id/network_rates" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="16dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Buddy.Label" android:text="Data masuk per detik" />
+                        <TextView android:id="@+id/tv_download_speed" style="@style/Buddy.Title" android:text="Belum terbaca" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Buddy.Label" android:text="Data keluar per detik" />
+                        <TextView android:id="@+id/tv_upload_speed" style="@style/Buddy.Title" android:text="Belum terbaca" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/panel_ping" style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="@string/network_ping_title" />
+                <TextView style="@style/Buddy.Label" android:text="@string/network_ping_hint" />
+                <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/toggle_dns" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="12dp" app:singleSelection="true" app:selectionRequired="true" app:checkedButton="@id/btn_google_dns">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_google_dns" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Google · 8.8.8.8" app:icon="@drawable/ic_ms_network_ping" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_cloudflare_dns" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Cloudflare · 1.1.1.1" app:icon="@drawable/ic_ms_network_ping" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="16dp">
+                    <ImageView android:id="@+id/iv_ping_status" android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/network_ping_idle" android:src="@drawable/ic_ms_network_ping" android:tint="@color/buddy_sub" />
+                    <TextView android:id="@+id/tv_ping_status" style="@style/Buddy.Title" android:layout_width="wrap_content" android:layout_marginStart="8dp" android:text="@string/network_ping_idle" />
+                    <ProgressBar android:id="@+id/ping_progress" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginStart="8dp" android:visibility="gone" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_ping_latency" style="@style/Buddy.Value" android:text="—" android:layout_marginTop="4dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="8dp">
+                    <TextView android:id="@+id/tv_ping_threshold_status" style="@style/Buddy.Label" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/network_ping_threshold_placeholder" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_ping_threshold" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="48dp" android:minHeight="48dp" android:text="@string/network_ping_edit_threshold" app:icon="@drawable/ic_ms_edit" />
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_test_ping" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="@string/network_ping_test" app:icon="@drawable/ic_ms_network_ping" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>

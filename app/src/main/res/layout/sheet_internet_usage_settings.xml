@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:background="@color/buddy_tile">
+    <LinearLayout style="@style/Buddy.Panel" android:paddingTop="24dp">
+        <TextView style="@style/Buddy.Title" android:text="@string/internet_settings_budget" />
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Buddy.TextInputLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="@string/internet_budget_input">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/input_monthly_budget" style="@style/Widget.Buddy.TextInputEditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:minHeight="56dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_save_target" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="12dp" android:text="@string/internet_save" app:icon="@drawable/ic_ms_save" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_clear_target" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="8dp" android:text="@string/internet_clear_target" app:icon="@drawable/ic_ms_delete" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_settings_cancel" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="8dp" android:text="@string/internet_cancel" app:icon="@drawable/ic_ms_close" />
+    </LinearLayout>
+</ScrollView>

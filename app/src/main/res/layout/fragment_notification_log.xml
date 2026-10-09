@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/buddy_stage"
+    android:theme="@style/ThemeOverlay.Buddy.Surface">
+
+    <com.assistant.adi.ui.buddy.BuddyContentColumn
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp">
+
+        <!-- Search and Filter Controls -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Buddy.SurfaceCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Search input -->
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:queryHint="Cari notifikasi..."
+                    app:iconifiedByDefault="false"
+                    android:background="@drawable/search_bg"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Filters & Toggles -->
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggle_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:checkedButton="@id/btn_view_logs"
+                    android:layout_marginBottom="10dp">
+                    
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_view_logs"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="48dp"
+                        android:text="Riwayat"
+                        android:textSize="14sp" app:icon="@drawable/ic_ms_history" app:iconSize="20dp" app:iconTint="@color/buddy_action_text_selector"/>
+                    
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_view_stats"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="48dp"
+                        android:text="Statistik"
+                        android:textSize="14sp" app:icon="@drawable/ic_ms_bar_chart" app:iconSize="20dp" app:iconTint="@color/buddy_action_text_selector"/>
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <Spinner
+                    android:id="@+id/spinner_app_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/tv_feed_context"
+                    style="@style/Buddy.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Semua aplikasi · semua notifikasi" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Main Content Area -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- Feed List View -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_notifications_feed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_notification_log" />
+
+            <!-- Stats List View -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_notifications_stats"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                tools:listitem="@layout/item_notif_stat" />
+
+            <!-- Empty State Info -->
+            <TextView
+                android:id="@+id/tv_empty_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum ada catatan notifikasi."
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/buddy_sub"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+
+</LinearLayout>

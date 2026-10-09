@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assistant Adi Dashboard"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Battery Row -->
+    <LinearLayout
+        android:id="@+id/widget_sec_battery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_battery"
+            android:contentDescription="Battery"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BATTERY"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_action"/>
+            <TextView
+                android:id="@+id/widget_battery_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--°C"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/widget_battery_pct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- RAM & CPU Row -->
+    <LinearLayout
+        android:id="@+id/widget_sec_ram"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_ram_cpu"
+            android:contentDescription="RAM"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RAM &amp; CPU"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_action"/>
+            <TextView
+                android:id="@+id/widget_cpu_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPU: --%"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/widget_ram_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Screen Time Row -->
+    <LinearLayout
+        android:id="@+id/widget_sec_screen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_screen_time"
+            android:contentDescription="Screen Time"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCREEN TIME"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_action"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Today"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/widget_screen_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--m"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorSurfaceVariant"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Network Row -->
+    <LinearLayout
+        android:id="@+id/widget_sec_network"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_network"
+            android:contentDescription="Network"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NETWORK"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/buddy_action"/>
+            <TextView
+                android:id="@+id/widget_net_speeds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↓ -- KB/s ↑ -- KB/s"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/widget_ping_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-- ms"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"/>
+    </LinearLayout>
+
+</LinearLayout>

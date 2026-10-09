@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/buddy_stage" android:theme="@style/ThemeOverlay.Buddy.Surface">
+    <com.assistant.adi.ui.buddy.BuddyContentColumn style="@style/Buddy.Panel" android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView style="@style/Widget.Buddy.SurfaceCard">
+            <LinearLayout style="@style/Buddy.Panel">
+                <TextView style="@style/Buddy.Title" android:text="Cadangan &amp; ekspor" />
+                <TextView style="@style/Buddy.Label" android:text="Simpan salinan catatanmu atau pulihkan cadangan lokal." android:layout_marginBottom="12dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_export_csv" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="Ekspor catatan ke CSV" app:icon="@drawable/ic_ms_upload_file" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_backup_db" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="Buat cadangan lokal" android:layout_marginTop="8dp" app:icon="@drawable/ic_ms_save" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_restore_db" style="@style/Widget.Buddy.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="Pulihkan cadangan lokal" android:textColor="@color/buddy_danger" android:layout_marginTop="8dp" app:iconTint="@color/buddy_danger" app:icon="@drawable/ic_ms_history" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.assistant.adi.ui.buddy.BuddyContentColumn>
+</androidx.core.widget.NestedScrollView>
