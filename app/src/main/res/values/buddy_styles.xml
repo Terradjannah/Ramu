@@ -1,4 +1,4 @@
-<resources><color name="buddy_launcher">#675080</color>
+<resources><color name="buddy_launcher">#28644F</color>
     <dimen name="buddy_space">16dp</dimen>
     <dimen name="buddy_radius">20dp</dimen>
     <style name="Widget.Buddy.Button" parent="Widget.Material3.Button">

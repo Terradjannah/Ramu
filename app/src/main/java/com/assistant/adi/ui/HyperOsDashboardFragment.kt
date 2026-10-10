@@ -118,8 +118,8 @@ class HyperOsDashboardFragment : Fragment() {
         body.addView(avatar, LinearLayout.LayoutParams(-1, ui.dp(height)).apply { topMargin = -ui.dp(14); bottomMargin = ui.dp(4) })
         body.addView(ui.button("Obrolan", icon = R.drawable.ic_ms_chat) { navigate("ai_chat") }.apply {
             textSize = 17f
-            backgroundTintList = ColorStateList.valueOf(ui.color(R.color.buddy_action))
-            setTextColor(ui.color(R.color.buddy_on_action))
+            backgroundTintList = ColorStateList.valueOf(ui.color(R.color.buddy_primary))
+            setTextColor(ui.color(R.color.buddy_primary_text))
             rippleColor = ColorStateList.valueOf(0x30536B61)
             strokeWidth = 0
             strokeColor = ColorStateList(arrayOf(intArrayOf(android.R.attr.state_focused), intArrayOf()),
@@ -140,7 +140,7 @@ class HyperOsDashboardFragment : Fragment() {
         }, LinearLayout.LayoutParams(ui.dp(22), ui.dp(22)))
         val screenNote = style.text("Dihitung dari layar aktif dan terbuka", 13f, secondary = true)
         val screenFreshness = style.text("Menunggu bacaan langsung", 12f, secondary = true)
-        val screenMeter = CapsuleDrawable(ui.color(R.color.buddy_track), ui.color(R.color.buddy_action), 0f)
+        val screenMeter = CapsuleDrawable(ui.color(R.color.buddy_track), ui.color(R.color.buddy_chart_blue), 0f)
         val screenProgress = View(requireContext()).apply { background = screenMeter }
         screenBox.addView(screenTop); screenBox.addView(screenNote, ui.margin(top = 8, bottom = 0))
         screenBox.addView(screenProgress, LinearLayout.LayoutParams(-1, ui.dp(6)).apply { topMargin = ui.dp(8); bottomMargin = ui.dp(8) })
@@ -203,6 +203,10 @@ class HyperOsDashboardFragment : Fragment() {
                         else -> "Bacaan langsung · ${DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(aware.timestamp))}"
                     }
                     screenProgress.visibility = if (aware?.todayMinutes != null && aware.dailyGoalMinutes > 0) View.VISIBLE else View.GONE
+                    val screenGoalReached = aware?.let { state ->
+                        state.dailyGoalMinutes > 0 && (state.todayMinutes ?: 0) >= state.dailyGoalMinutes
+                    } == true
+                    screenMeter.fill = ui.color(if (screenGoalReached) R.color.buddy_warning else R.color.buddy_chart_blue)
                     screenMeter.percent = aware?.todayMinutes?.let { if (aware.dailyGoalMinutes > 0) (it * 100 / aware.dailyGoalMinutes).coerceIn(0, 100) else null }
                     screenBox.contentDescription = "Waktu layar hari ini. ${duration.text}. ${screenNote.text}. ${screenFreshness.text}. Buka detail"
                     val next = engine.update(

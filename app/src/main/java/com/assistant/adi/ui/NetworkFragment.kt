@@ -73,6 +73,9 @@ class NetworkFragment : Fragment() {
             is PingState.Error -> PingAppearance(R.string.network_ping_error, R.drawable.ic_ms_error, R.color.buddy_danger_surface, R.color.buddy_danger)
         }
         binding.panelPing.setCardBackgroundColor(ContextCompat.getColor(requireContext(), surface))
+        binding.panelPing.strokeWidth = if (state is PingState.Success && state.latencyMs > threshold)
+            (resources.displayMetrics.density + 0.5f).toInt() else 0
+        binding.panelPing.strokeColor = ContextCompat.getColor(requireContext(), R.color.buddy_warning)
         binding.tvPingStatus.setText(label)
         binding.tvPingStatus.setTextColor(ContextCompat.getColor(requireContext(), tint))
         binding.ivPingStatus.setImageResource(icon)

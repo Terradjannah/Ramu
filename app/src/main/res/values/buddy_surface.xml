@@ -2,6 +2,8 @@
     <color name="buddy_action">#28634D</color>
     <color name="buddy_on_action">#FFFFFF</color>
     <color name="buddy_action_pressed">#1E4E3C</color>
+    <color name="buddy_primary">#28634D</color>
+    <color name="buddy_primary_text">#FFFFFF</color>
     <color name="buddy_disabled_container">#DFE5E0</color>
     <color name="buddy_disabled_foreground">#65736A</color>
     <color name="buddy_surface_muted">#E9F0EA</color>
@@ -13,6 +15,9 @@
     <color name="buddy_divider">#85958C</color>
     <color name="buddy_chart_blue">#35688A</color>
     <color name="buddy_chart_lilac">#79568E</color>
+    <color name="buddy_internet_wifi">@color/buddy_ink</color>
+    <color name="buddy_internet_mobile">@color/buddy_ink</color>
+    <color name="buddy_info_icon">@color/buddy_action</color>
     <color name="buddy_selection">#DCE7E1</color>
     <color name="buddy_danger_surface">#E9C2CB</color>
     <dimen name="buddy_space_1">4dp</dimen>

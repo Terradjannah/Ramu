@@ -51,6 +51,11 @@ class MonitorCard(ui: BuddyUi, parent: LinearLayout, private val monitor: Monito
     }
     fun update(reading: MonitorReading, casual: Boolean = true) {
         value.text = reading.value
+        if (reading.condition == Condition.ATTENTION || reading.condition == Condition.ACTION) {
+            meter.fill = status.context.getColor(if (reading.condition == Condition.ACTION) R.color.buddy_danger else R.color.buddy_warning)
+        } else {
+            meter.fill = status.context.getColor(palette.second)
+        }
         status.text = reading.condition.label
         status.setTextColor(status.context.getColor(when (reading.condition) {
             Condition.GOOD -> R.color.buddy_action

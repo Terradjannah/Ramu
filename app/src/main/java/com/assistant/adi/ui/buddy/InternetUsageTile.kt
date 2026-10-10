@@ -53,6 +53,7 @@ class InternetUsageTile(private val style: BuddyHomeStyle, action: () -> Unit) {
             state.limits.dailyTargetBytes != null -> "Target harian ${formatGigabytes(state.limits.dailyTargetBytes)}"
             else -> "Target harian belum tersedia"
         }
+        target.setTextColor(ui.color(if (state.limits.dailyReached) R.color.buddy_warning else R.color.buddy_stage_sub))
         root.contentDescription = "Penggunaan internet. ${value.text}. ${sample.text}. ${target.text}. Buka detail"
     }
 

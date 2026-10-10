@@ -7,6 +7,7 @@
         <item name="colorSecondary">@color/buddy_action</item>
         <item name="colorOnSecondary">@color/buddy_on_action</item>
         <item name="android:windowBackground">@color/buddy_stage</item>
+        <item name="android:colorBackground">@color/buddy_stage</item>
         <item name="colorSurface">@color/buddy_stage</item>
         <item name="colorSurfaceVariant">@color/buddy_surface_muted</item>
         <item name="colorSurfaceContainer">@color/buddy_tile</item>

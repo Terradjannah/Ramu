@@ -2,15 +2,15 @@
 
 Ramu is an Android app for viewing device health and usage habits in one place. The home screen summarizes battery, memory, network, storage, screen time, and internet usage. Its companion character provides quick access to local AI chat and detailed views.
 
-The project is currently in **beta 0.5**. Monitor values depend on data provided by Android and the permissions you grant. The AI model is not included in the APK.
+The project is currently in **beta 0.51**. Monitor values depend on data provided by Android and the permissions you grant. The AI model is not included in the APK.
 
 ## Download and install
 
-1. Open [Ramu GitHub Releases](https://github.com/Terradjannah/Ramu/releases/tag/v0.5-beta) and download **Ramu.apk** from the *Assets* section. Do not install APKs from other sources.
+1. Open [Ramu GitHub Releases](https://github.com/Terradjannah/Ramu/releases/tag/v0.51-beta) and download **Ramu.apk** from the *Assets* section. Do not install APKs from other sources.
 2. On a phone running Android 10 or later, open the downloaded APK. If Android asks you to allow installs from this source, grant permission to the file manager or browser you are using, then continue the installation.
 3. Launch Ramu and complete the initial setup. You can grant permissions later from **Settings → App permissions** in Ramu.
 
-Direct download link for the Ramu website: [Ramu.apk](https://github.com/Terradjannah/Ramu/releases/download/v0.5-beta/Ramu.apk). You can check the installed version in Android's app information. Future updates must be signed with the same release key to install over an existing version.
+Direct APK asset: [Ramu.apk](https://github.com/Terradjannah/Ramu/releases/download/v0.51-beta/Ramu.apk). You can check the installed version in Android's app information. Future updates must be signed with the same release key to install over an existing version.
 
 ## Features
 

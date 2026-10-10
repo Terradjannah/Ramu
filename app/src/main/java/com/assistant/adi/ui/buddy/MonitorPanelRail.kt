@@ -78,9 +78,8 @@ class MonitorPanelRail(
             val underline = View(context).apply { importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO }
             tab.addView(icon, LayoutParams(ui.dp(20), ui.dp(20)))
             tab.addView(label, LayoutParams(-1, -2))
-            tab.addView(View(context), LayoutParams(1, 0, 1f))
             tab.addView(underline, LayoutParams(-1, ui.dp(2)))
-            addView(tab, LayoutParams(0, -1, 1f))
+            addView(tab, LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f))
             tabs[panel] = label to underline
         }
     }

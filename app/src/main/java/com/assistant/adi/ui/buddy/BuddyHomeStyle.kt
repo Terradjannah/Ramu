@@ -88,6 +88,11 @@ class BuddyMetricTile(private val style: BuddyHomeStyle, val monitor: Monitor, a
     }
     fun update(reading: MonitorReading, detail: String? = null) {
         value.text = if (reading.condition == Condition.UNKNOWN) "Belum ada" else reading.compactValue
+        meter.fill = ui.color(when (reading.condition) {
+            Condition.ATTENTION -> R.color.buddy_warning
+            Condition.ACTION -> R.color.buddy_danger
+            else -> if (monitor == Monitor.BATTERY) R.color.buddy_action else R.color.buddy_chart_blue
+        })
         progress.visibility = if (monitor != Monitor.NETWORK && reading.percent != null) View.VISIBLE else View.GONE
         meter.percent = reading.percent
         caption.text = when {
@@ -105,7 +110,9 @@ class BuddyMetricTile(private val style: BuddyHomeStyle, val monitor: Monitor, a
     }
 }
 
-class CapsuleDrawable(private val track: Int, private val fill: Int, private val stroke: Float) : Drawable() {
+class CapsuleDrawable(private val track: Int, fill: Int, private val stroke: Float) : Drawable() {
+    var fill: Int = fill
+        set(value) { field = value; invalidateSelf() }
     var percent: Int? = null
         set(value) { field = value; invalidateSelf() }
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

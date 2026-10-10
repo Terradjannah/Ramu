@@ -12,8 +12,8 @@ android {
         applicationId = "com.assistant.adi"
         minSdk = 29
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.5-beta"
+        versionCode = 6
+        versionName = "0.51-beta"
         // The endpoint and SPKI key are provisioned together after Pages is configured.
         val catalogBaseUrl = providers.gradleProperty("catalogBaseUrl").orNull.orEmpty()
         val catalogPublicKey = providers.gradleProperty("catalogPublicKeySpkiBase64").orNull.orEmpty()

@@ -241,8 +241,11 @@ class InternetUsageFragment : Fragment() {
     private fun renderLimit(card: MaterialCardView, normalColor: Int, label: android.widget.TextView,
         reachedRow: View, progress: LinearProgressIndicator, setLimit: View,
         limit: Long?, total: Long?, reached: Boolean, title: String) {
-        card.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-            if (reached) R.color.buddy_danger_surface else normalColor))
+        card.setCardBackgroundColor(ContextCompat.getColor(requireContext(), normalColor))
+        card.strokeWidth = if (reached) (resources.displayMetrics.density + 0.5f).toInt() else 0
+        card.strokeColor = ContextCompat.getColor(requireContext(), R.color.buddy_warning)
+        progress.setIndicatorColor(ContextCompat.getColor(requireContext(),
+            if (reached) R.color.buddy_warning else R.color.buddy_chart_blue))
         label.text = if (limit == null) "$title · Belum diatur" else "$title ${formatGb(limit)}"
         reachedRow.visibility = if (reached) View.VISIBLE else View.GONE
         setLimit.visibility = if (limit == null) View.VISIBLE else View.GONE

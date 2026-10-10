@@ -13,17 +13,17 @@
                 <LinearLayout style="@style/Buddy.Panel">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                         <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/internet_today" />
-                        <ImageButton android:id="@+id/btn_today_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" android:contentDescription="@string/internet_today_info" />
+                        <ImageButton android:id="@+id/btn_today_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_info_icon" android:contentDescription="@string/internet_today_info" />
                     </LinearLayout>
                     <TextView android:id="@+id/tv_today_date" style="@style/Buddy.Label" />
                     <TextView android:id="@+id/tv_today_total" style="@style/Buddy.Value" android:layout_marginTop="8dp" android:text="Membaca catatan…" />
                     <LinearLayout android:id="@+id/today_transport_row" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:baselineAligned="false">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_wifi" android:tint="@color/buddy_ink" android:importantForAccessibility="no" />
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_wifi" android:tint="@color/buddy_internet_wifi" android:importantForAccessibility="no" />
                             <TextView android:id="@+id/tv_today_wifi" style="@style/Buddy.Label" android:layout_marginStart="8dp" />
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_signal_cellular_alt" android:tint="@color/buddy_ink" android:importantForAccessibility="no" />
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_signal_cellular_alt" android:tint="@color/buddy_internet_mobile" android:importantForAccessibility="no" />
                             <TextView android:id="@+id/tv_today_mobile" style="@style/Buddy.Label" android:layout_marginStart="8dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -42,17 +42,17 @@
                 <LinearLayout style="@style/Buddy.Panel">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                         <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/internet_monthly" />
-                        <ImageButton android:id="@+id/btn_monthly_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" android:contentDescription="@string/internet_monthly_info" />
+                        <ImageButton android:id="@+id/btn_monthly_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_info_icon" android:contentDescription="@string/internet_monthly_info" />
                     </LinearLayout>
                     <TextView android:id="@+id/tv_cycle_range" style="@style/Buddy.Label" />
                     <TextView android:id="@+id/tv_cycle_total" style="@style/Buddy.Value" android:layout_marginTop="8dp" />
                     <LinearLayout android:id="@+id/monthly_transport_row" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:baselineAligned="false">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_wifi" android:tint="@color/buddy_ink" android:importantForAccessibility="no" />
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_wifi" android:tint="@color/buddy_internet_wifi" android:importantForAccessibility="no" />
                             <TextView android:id="@+id/tv_cycle_wifi" style="@style/Buddy.Label" android:layout_marginStart="8dp" />
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_signal_cellular_alt" android:tint="@color/buddy_ink" android:importantForAccessibility="no" />
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_ms_signal_cellular_alt" android:tint="@color/buddy_internet_mobile" android:importantForAccessibility="no" />
                             <TextView android:id="@+id/tv_cycle_mobile" style="@style/Buddy.Label" android:layout_marginStart="8dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -69,7 +69,7 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="vertical">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                     <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/internet_chart_title" />
-                    <ImageButton android:id="@+id/btn_chart_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" android:contentDescription="@string/internet_chart_info" />
+                    <ImageButton android:id="@+id/btn_chart_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_info_icon" android:contentDescription="@string/internet_chart_info" />
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
                     <com.google.android.material.button.MaterialButton android:id="@+id/btn_usage_range_start" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="Dari tanggal" app:icon="@drawable/ic_ms_date_range" />
@@ -87,7 +87,7 @@
                 <LinearLayout style="@style/Buddy.Panel">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                         <TextView style="@style/Buddy.Title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Atur penggunaan data" />
-                        <ImageButton android:id="@+id/btn_settings_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_action_text_selector" android:contentDescription="@string/internet_settings_info" />
+                        <ImageButton android:id="@+id/btn_settings_info" style="@style/Widget.Buddy.IconButton" android:layout_marginStart="@dimen/buddy_space_2" android:src="@drawable/ic_ms_info" android:tint="@color/buddy_info_icon" android:contentDescription="@string/internet_settings_info" />
                     </LinearLayout>
                     <com.google.android.material.button.MaterialButton android:id="@+id/btn_open_settings" style="@style/Widget.Buddy.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="8dp" android:text="@string/internet_settings_budget" app:icon="@drawable/ic_ms_edit" />
                     <TextView android:id="@+id/tv_settings_budget" style="@style/Buddy.Label" android:layout_marginTop="4dp" android:text="@string/internet_budget_unset" />
