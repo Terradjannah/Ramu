@@ -14,9 +14,10 @@ android {
         targetSdk = 36
         versionCode = 6
         versionName = "0.51-beta"
-        // The endpoint and SPKI key are provisioned together after Pages is configured.
-        val catalogBaseUrl = providers.gradleProperty("catalogBaseUrl").orNull.orEmpty()
-        val catalogPublicKey = providers.gradleProperty("catalogPublicKeySpkiBase64").orNull.orEmpty()
+        val catalogBaseUrl = providers.gradleProperty("catalogBaseUrl").orNull
+            ?: "https://terradjannah.github.io/Ramu/catalog/v1/"
+        val catalogPublicKey = providers.gradleProperty("catalogPublicKeySpkiBase64").orNull
+            ?: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEoCT3Skc/1ZnkdZFdUp6w2z3gWF2YQx3Qpov80iyEtFrR75JK2/+0lGjo/uvYkt8kdAcEJ9fokIB7wsDGF02vQA=="
         buildConfigField("String", "CATALOG_BASE_URL", "\"$catalogBaseUrl\"")
         buildConfigField("String", "CATALOG_PUBLIC_KEY_SPKI_BASE64", "\"$catalogPublicKey\"")
 

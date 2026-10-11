@@ -30,6 +30,7 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.before }}
           GH_TOKEN: ${{ github.token }}
+          CATALOG_OWNER_APPROVED_SHA: ${{ vars.CATALOG_OWNER_APPROVED_SHA }}
         run: |
           test "$BASE_SHA" != '0000000000000000000000000000000000000000'
           python -m pip install cryptography==50.0.2

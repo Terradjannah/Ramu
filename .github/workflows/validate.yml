@@ -29,6 +29,7 @@ jobs:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           CATALOG_REVIEWERS: ${{ vars.CATALOG_REVIEWERS }}
+          CATALOG_OWNER_APPROVED_SHA: ${{ vars.CATALOG_OWNER_APPROVED_SHA }}
           GH_TOKEN: ${{ github.token }}
         working-directory: candidate
         run: |
