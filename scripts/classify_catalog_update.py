@@ -4,6 +4,7 @@
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -143,9 +144,14 @@ def approved_merge(repository, sha, token):
     if not repository or not token:
         return False
     root = f"https://api.github.com/repos/{repository}"
+    approved_sha = os.environ.get("CATALOG_OWNER_APPROVED_SHA", "")
     for pr in api_json(f"{root}/commits/{sha}/pulls?per_page=100", token):
         if not pr.get("merged_at") or pr.get("base", {}).get("ref") != "main":
             continue
+        if (re.fullmatch(r"[a-f0-9]{40}", approved_sha) and
+                pr.get("merge_commit_sha") == sha and pr["head"]["sha"] == approved_sha and
+                pr["user"]["login"].casefold() == repository.split("/", 1)[0].casefold()):
+            return True
         reviews = api_json(f"{root}/pulls/{pr['number']}/reviews?per_page=100", token)
         if len(reviews) == 100:
             continue  # Never infer approval from a truncated review history.
