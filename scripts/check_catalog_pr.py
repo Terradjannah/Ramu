@@ -38,12 +38,13 @@ def variants(root):
     for entry in index["generations"]:
         generation = read_json(production / entry["path"], MAX_GENERATION_BYTES)[0]
         for model in generation["models"]:
-            result.update({v["variantId"]: v for v in model["variants"]})
+            if model["status"] == "available":
+                result.update({v["variantId"]: v for v in model["variants"]})
     return result
 
 
 def check_evidence_reuse(candidate, trusted):
-    previous = variants(trusted)
+    previous = variants(trusted) if (trusted / "catalog/production/index.json").is_file() else {}
     for key, variant in variants(candidate).items():
         name = f"catalog/evidence/{key}.json"
         record, raw = read_json(candidate / name, MAX_GENERATION_BYTES)

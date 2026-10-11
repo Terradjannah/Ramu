@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from check_catalog_pr import check_evidence_reuse
 from validate_catalog import ROOT, validate
 from validate_catalog_evidence import validate_candidate_evidence
 
@@ -78,6 +79,11 @@ class InitialCatalogTest(unittest.TestCase):
             path.write_text(json.dumps(generation), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "metadata or device floor differs"):
                 validate_candidate_evidence(variant, "gemma-4-e2b", "gemma-4", staged)
+
+    def test_candidates_do_not_require_inference_evidence_files(self):
+        check_evidence_reuse(ROOT, ROOT)
+        with tempfile.TemporaryDirectory() as temporary:
+            check_evidence_reuse(ROOT, Path(temporary))
 
 
 if __name__ == "__main__":
