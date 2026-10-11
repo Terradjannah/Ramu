@@ -4,6 +4,7 @@
 import argparse
 import json
 import os
+import re
 import sys
 
 from pathlib import Path
@@ -29,6 +30,16 @@ def owner_approved(repository, number, head, reviewers, token):
     return any(user in reviewers and user != pr["user"]["login"] and
                review["state"] == "APPROVED" and review.get("commit_id") == head
                for user, review in latest.items())
+
+
+def owner_sha_approved(repository, number, head, approved_sha, token):
+    if not repository or not number or not head or not token or not re.fullmatch(r"[a-f0-9]{40}", approved_sha):
+        return False
+    if approved_sha != head:
+        return False
+    pr = api_json(f"https://api.github.com/repos/{repository}/pulls/{number}", token)
+    return (pr["head"]["sha"] == head and pr["base"]["ref"] == "main" and
+            pr["user"]["login"].casefold() == repository.split("/", 1)[0].casefold())
 
 
 def variants(root):
@@ -84,9 +95,12 @@ def main():
         print(json.dumps(result, sort_keys=True))
         if not result["autoPublish"]:
             reviewers = set(os.environ.get("CATALOG_REVIEWERS", "").split(",")) - {""}
-            if not owner_approved(os.environ.get("GITHUB_REPOSITORY"), os.environ.get("PR_NUMBER"),
-                                  os.environ.get("PR_HEAD_SHA"), reviewers, os.environ.get("GH_TOKEN")):
-                raise ValueError("current independent catalog owner approval required; approve then rerun this check")
+            repository, number = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("PR_NUMBER")
+            head, token = os.environ.get("PR_HEAD_SHA"), os.environ.get("GH_TOKEN")
+            approved_sha = os.environ.get("CATALOG_OWNER_APPROVED_SHA", "")
+            if not (owner_sha_approved(repository, number, head, approved_sha, token) or
+                    owner_approved(repository, number, head, reviewers, token)):
+                raise ValueError("current catalog approval required; set exact owner-approved SHA or obtain an independent review")
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f"PR catalog gate rejected: {exc}", file=sys.stderr)
         return 1
