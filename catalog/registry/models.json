@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "models": [
+    {
+      "modelId": "gemma-3n-e2b",
+      "generationId": "gemma-3",
+      "enabled": true,
+      "trackUpdates": true,
+      "allowedArtifacts": [{"repoId": "google/gemma-3n-E2B-it-litert-lm", "path": "gemma-3n-E2B-it-int4.litertlm"}],
+      "updatePolicy": {"metadataAutoPublish": false, "unchangedArtifactAutoPublish": false, "changedArtifactAutoPublish": false, "requireRuntimeCompatibility": true, "requireArtifactVerification": true, "requireInferenceTest": true, "newVariantRequiresReview": true}
+    },
+    {
+      "modelId": "gemma-3n-e4b",
+      "generationId": "gemma-3",
+      "enabled": true,
+      "trackUpdates": true,
+      "allowedArtifacts": [{"repoId": "google/gemma-3n-E4B-it-litert-lm", "path": "gemma-3n-E4B-it-int4.litertlm"}],
+      "updatePolicy": {"metadataAutoPublish": false, "unchangedArtifactAutoPublish": false, "changedArtifactAutoPublish": false, "requireRuntimeCompatibility": true, "requireArtifactVerification": true, "requireInferenceTest": true, "newVariantRequiresReview": true}
+    },
+    {
+      "modelId": "gemma-4-e2b",
+      "generationId": "gemma-4",
+      "enabled": true,
+      "trackUpdates": true,
+      "allowedArtifacts": [{"repoId": "litert-community/gemma-4-E2B-it-litert-lm", "path": "gemma-4-E2B-it.litertlm"}],
+      "updatePolicy": {"metadataAutoPublish": false, "unchangedArtifactAutoPublish": false, "changedArtifactAutoPublish": false, "requireRuntimeCompatibility": true, "requireArtifactVerification": true, "requireInferenceTest": true, "newVariantRequiresReview": true}
+    },
+    {
+      "modelId": "gemma-4-e4b",
+      "generationId": "gemma-4",
+      "enabled": true,
+      "trackUpdates": true,
+      "allowedArtifacts": [{"repoId": "litert-community/gemma-4-E4B-it-litert-lm", "path": "gemma-4-E4B-it.litertlm"}],
+      "updatePolicy": {"metadataAutoPublish": false, "unchangedArtifactAutoPublish": false, "changedArtifactAutoPublish": false, "requireRuntimeCompatibility": true, "requireArtifactVerification": true, "requireInferenceTest": true, "newVariantRequiresReview": true}
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "familyId": "gemma",
+  "generationId": "gemma-3",
+  "name": "Gemma 3n",
+  "status": "available",
+  "models": [
+    {
+      "modelId": "gemma-3n-e2b",
+      "familyId": "gemma",
+      "generationId": "gemma-3",
+      "name": "Gemma 3n E2B (IT INT4)",
+      "description": "Model Gemma 3n E2B IT INT4 untuk inferensi lokal melalui CPU LiteRT-LM.",
+      "status": "available",
+      "variants": [
+        {
+          "variantId": "gemma-3n-e2b-cpu",
+          "artifactVersion": 1,
+          "format": "litertlm",
+          "runtime": {"minVersion": "0.16.1", "maxVersion": "0.16.1"},
+          "testedBackends": ["cpu"],
+          "minApi": 36,
+          "abis": ["arm64-v8a"],
+          "minRamBytes": 2621440000,
+          "recommendedRamBytes": 8000000000,
+          "minStorageBytes": 3790045184,
+          "hardware": {"socIds": [], "driverIds": []},
+          "repoId": "google/gemma-3n-E2B-it-litert-lm",
+          "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+          "path": "gemma-3n-E2B-it-int4.litertlm",
+          "sizeBytes": 3655827456,
+          "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6",
+          "evidence": {
+            "artifactSha256Verified": true,
+            "artifactSource": "https://huggingface.co/api/models/google/gemma-3n-E2B-it-litert-lm/revision/c03b6f60b8da6c5400b6838a2cf26420f80c0a01?blobs=true",
+            "license": "gemma",
+            "gated": true,
+            "runtimeTest": "catalog/evidence/gemma-3n-e2b-cpu.json",
+            "backendTests": {"cpu": "catalog/evidence/gemma-3n-e2b-cpu.json"}
+          }
+        }
+      ]
+    },
+    {
+      "modelId": "gemma-3n-e4b",
+      "familyId": "gemma",
+      "generationId": "gemma-3",
+      "name": "Gemma 3n E4B (IT INT4)",
+      "description": "Model lokal E4B terpasang; inferensi pada APK ini masih menunggu pengujian dengan RAM yang cukup.",
+      "status": "unavailable",
+      "variants": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "familyId": "gemma",
+  "generationId": "gemma-4",
+  "name": "Gemma 4",
+  "status": "unavailable",
+  "models": [
+    {
+      "modelId": "gemma-4-e2b",
+      "familyId": "gemma",
+      "generationId": "gemma-4",
+      "name": "Gemma 4 E2B IT",
+      "description": "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.",
+      "status": "unavailable",
+      "variants": []
+    },
+    {
+      "modelId": "gemma-4-e4b",
+      "familyId": "gemma",
+      "generationId": "gemma-4",
+      "name": "Gemma 4 E4B IT",
+      "description": "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.",
+      "status": "unavailable",
+      "variants": []
+    }
+  ]
+}

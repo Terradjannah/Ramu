@@ -54,7 +54,8 @@ class ModelGalleryAdapter(
             binding.tvModelGroup.text = group.orEmpty()
             binding.tvModelName.text = item.shortName
             binding.tvModelSize.text = context.getString(R.string.model_download_size, item.sizeLabel)
-            binding.tvModelDetails.text = listOf(item.catalogStatus, item.displayVariant?.variantId ?: "Model lokal",
+            binding.tvModelDetails.text = listOf(item.catalogStatus,
+                item.displayVariant?.variantId ?: if (item.fileName.isNotBlank()) "Model lokal" else "Belum ada varian unduhan",
                 item.backend, item.ramUsageLabel, item.displayVariant?.license?.let { "Lisensi: $it" },
                 item.displayVariant?.takeIf { it.gated }?.let { "Akses Hugging Face diperlukan" },
                 item.incompatibility?.let { "Tidak kompatibel: $it" })

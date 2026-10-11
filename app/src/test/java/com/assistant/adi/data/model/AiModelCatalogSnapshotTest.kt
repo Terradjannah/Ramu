@@ -53,10 +53,44 @@ class AiModelCatalogSnapshotTest {
             file.writeBytes(byteArrayOf(1, 2, 3))
             ModelFiles.markReady(file)
             val current = AiModelCatalog.fromSnapshot(snapshot(listOf(variant)), device, directory)
+            assertEquals(1, current.size)
+            assertEquals(AiModelCatalog.MODEL_E2B.id, current.single().id)
+            assertEquals(file.name, current.single().fileName)
+            assertNull(current.single().variant)
+            assertNull(current.single().incompatibility)
+            assertEquals("CPU", current.single().backend)
+            assertEquals("Perangkat min. 8 GB RAM", current.single().ramUsageLabel)
             assertNotNull(AiModelCatalog.forFile(current, file.name))
             val offline = AiModelCatalog.fromSnapshot(snapshot(emptyList(), CatalogSource.LOCAL_FALLBACK), device, directory)
             assertNotNull(AiModelCatalog.forFile(offline, file.name))
             assertEquals(file.name, AiModelCatalog.forFile(current, file.name)?.fileName)
+        } finally { directory.deleteRecursively() }
+    }
+
+    @Test fun productionCandidateKeepsBothInstalledGemma3nIdentities() {
+        val directory = Files.createTempDirectory("catalog-models").toFile()
+        try {
+            val legacy = listOf(AiModelCatalog.MODEL_E2B, AiModelCatalog.MODEL_E4B)
+            legacy.forEach { model ->
+                File(directory, model.fileName).apply {
+                    writeBytes(byteArrayOf(1, 2, 3))
+                    ModelFiles.markReady(this)
+                }
+            }
+            val production = CatalogSnapshot(1, listOf(CatalogGeneration("gemma", "gemma-3", "Gemma 3n", "unavailable",
+                legacy.map { CatalogModel(it.id, "gemma", "gemma-3", it.name, it.description, "unavailable", emptyList()) }
+            )), CatalogSource.VERIFIED)
+            val items = AiModelCatalog.fromSnapshot(production, device, directory)
+            assertEquals(legacy.map { it.id }, items.map { it.id })
+            assertEquals(legacy.map { it.fileName }, items.map { it.fileName })
+            items.forEach {
+                assertNull(it.variant)
+                assertNull(it.incompatibility)
+                assertEquals("CPU", it.backend)
+            }
+            assertEquals("Perangkat min. 12 GB RAM", items[1].ramUsageLabel)
+            assertEquals(AiModelCatalog.MODEL_E4B.id,
+                AiModelCatalog.forFile(items, AiModelCatalog.MODEL_E4B.fileName)?.id)
         } finally { directory.deleteRecursively() }
     }
 }

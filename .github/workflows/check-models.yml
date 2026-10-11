@@ -1,0 +1,23 @@
+name: Monitor curated Hugging Face models
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Read curated file metadata only
+        env:
+          HF_READ_TOKEN: ${{ secrets.HF_READ_TOKEN }}
+        run: python scripts/check_huggingface.py --output "$RUNNER_TEMP/hf-observations.json"

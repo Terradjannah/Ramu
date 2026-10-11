@@ -37,9 +37,9 @@ object AiModelCatalog {
         shortName = "Gemma 3n E2B",
         fileName = "gemma-3n-E2B-it-int4.litertlm",
         downloadUrl = "https://huggingface.co/google/gemma-3n-E2B-it-litert-lm/resolve/main/gemma-3n-E2B-it-int4.litertlm",
-        expectedSizeBytes = 2280000000L, // ~2.12 GB
-        sizeLabel = "2.1 GB",
-        ramUsageLabel = "~2.0 GB RAM",
+        expectedSizeBytes = 3655827456L,
+        sizeLabel = "3.40 GiB",
+        ramUsageLabel = "Perangkat min. 8 GB RAM",
         badge = "CPU • Lokal",
         description = "Model lokal ringkas. Backend CPU; kecepatan dan kebutuhan RAM bergantung perangkat.",
         isNpuSupported = false
@@ -51,9 +51,9 @@ object AiModelCatalog {
         shortName = "Gemma 3n E4B",
         fileName = "gemma-3n-E4B-it-int4.litertlm",
         downloadUrl = "https://huggingface.co/google/gemma-3n-E4B-it-litert-lm/resolve/main/gemma-3n-E4B-it-int4.litertlm",
-        expectedSizeBytes = 5283233792L, // ~4.92 GB
-        sizeLabel = "4.92 GB",
-        ramUsageLabel = "~4.5 - 5.0 GB RAM",
+        expectedSizeBytes = 4919541760L,
+        sizeLabel = "4.58 GiB",
+        ramUsageLabel = "Perangkat min. 12 GB RAM",
         badge = "CPU • Lokal",
         description = "Model lokal lebih besar. Backend CPU; kecepatan dan kebutuhan RAM bergantung perangkat.",
         isNpuSupported = false
@@ -83,8 +83,20 @@ object AiModelCatalog {
                 val variant = selected?.variant
                 val displayVariant = variant ?: model.variants.firstOrNull()
                 val legacy = getModelById(model.modelId)
-                val fileName = variant?.let { ModelFiles.forVariant(directory, it).name } ?: legacy?.fileName.orEmpty()
+                val legacyFile = legacy?.let { File(directory, it.fileName) }
+                val useLegacy = legacyFile?.let(ModelFiles::isReady) == true
+                val backendLabel = when {
+                    useLegacy -> "CPU"
+                    selected?.backend != null -> selected.backend.uppercase()
+                    else -> "Belum diverifikasi"
+                }
+                val ramLabel = if (legacy != null && (useLegacy || displayVariant == null)) legacy.ramUsageLabel else
+                    displayVariant?.recommendedRamBytes?.let { "%.1f GB RAM perangkat".format(it / 1_000_000_000.0) }
+                        ?: "Persyaratan RAM belum diverifikasi"
+                val fileName = if (useLegacy) legacy!!.fileName else
+                    variant?.let { ModelFiles.forVariant(directory, it).name } ?: legacy?.fileName.orEmpty()
                 val issue = when {
+                    useLegacy -> null
                     snapshot.source != CatalogSource.VERIFIED -> "Katalog offline awal; varian unduhan belum tersedia"
                     generation.status != "available" || model.status != "available" -> "Belum tersedia di katalog"
                     selected == null -> selection.evaluations.flatMap { it.issues }.distinct().joinToString { it.name.lowercase().replace('_', ' ') }
@@ -95,11 +107,15 @@ object AiModelCatalog {
                     displayVariant?.let { "https://huggingface.co/${it.repoId}/resolve/${it.revision}/${it.path}" }.orEmpty(),
                     displayVariant?.sizeBytes ?: 0L,
                     displayVariant?.sizeBytes?.let { "%.2f GB".format(it / 1073741824.0) } ?: "—",
-                    displayVariant?.recommendedRamBytes?.let { "%.1f GB RAM disarankan".format(it / 1073741824.0) } ?: "RAM belum dikurasi",
-                    "${selected?.backend?.uppercase() ?: "Belum didukung"} • Lokal", model.description, false,
-                    variant, generation.familyId, generation.name, issue,
-                    selected?.backend?.uppercase() ?: "Belum didukung",
-                    if (snapshot.source == CatalogSource.VERIFIED) "Katalog terverifikasi" else "Katalog offline",
+                    ramLabel,
+                    "$backendLabel • Lokal", model.description, false,
+                    variant.takeUnless { useLegacy }, generation.familyId, generation.name, issue,
+                    backendLabel,
+                    when {
+                        snapshot.source != CatalogSource.VERIFIED -> "Katalog offline"
+                        model.status == "available" -> "Katalog terverifikasi"
+                        else -> "Kandidat katalog"
+                    },
                     model.variants.minOfOrNull { it.minStorageBytes } ?: 0L, displayVariant)
             }
         }

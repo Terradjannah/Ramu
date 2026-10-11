@@ -15,6 +15,13 @@ class CatalogRepositoryTest {
     private val verifier = CatalogVerifier(keys.public.encoded)
     private val generation = """{"schemaVersion":1,"familyId":"gemma","generationId":"gemma-3","name":"Gemma 3n","status":"unavailable","models":[{"modelId":"gemma-3n-e2b","familyId":"gemma","generationId":"gemma-3","name":"E2B","description":"Local","status":"unavailable","variants":[]}]}""".toByteArray()
 
+    @Test fun initialFallbackIncludesGemma4Candidates() {
+        val snapshot = CatalogRepository(null, null, MemoryCache()).state.value.snapshot
+        assertEquals(listOf("gemma-3", "gemma-4"), snapshot.generations.map { it.generationId })
+        assertEquals(listOf("gemma-4-e2b", "gemma-4-e4b"), snapshot.generations[1].models.map { it.modelId })
+        assertTrue(snapshot.generations[1].models.all { it.variants.isEmpty() })
+    }
+
     private fun signed(bytes: ByteArray): ByteArray {
         val signer = Signature.getInstance("SHA256withECDSA")
         signer.initSign(keys.private)

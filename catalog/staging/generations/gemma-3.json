@@ -1,0 +1,42 @@
+{
+  "familyId": "gemma",
+  "generationId": "gemma-3",
+  "models": [
+    {
+      "modelId": "gemma-3n-e2b",
+      "variantId": "gemma-3n-e2b-cpu",
+      "status": "pending-verification",
+      "artifactVersion": null,
+      "format": "litertlm",
+      "testedBackends": ["cpu"],
+      "minimumAndroidApi": null,
+      "minimumRamBytes": null,
+      "minimumStorageBytes": null,
+      "repoId": "google/gemma-3n-E2B-it-litert-lm",
+      "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "filename": "gemma-3n-E2B-it-int4.litertlm",
+      "sizeBytes": 3655827456,
+      "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6",
+      "metadataSource": "https://huggingface.co/api/models/google/gemma-3n-E2B-it-litert-lm/revision/c03b6f60b8da6c5400b6838a2cf26420f80c0a01?blobs=true",
+      "blockers": ["production CPU variant is restricted to the tested Android 36 arm64 device; wider device compatibility needs testing"]
+    },
+    {
+      "modelId": "gemma-3n-e4b",
+      "variantId": "gemma-3n-e4b-cpu",
+      "status": "pending-verification",
+      "artifactVersion": null,
+      "format": "litertlm",
+      "testedBackends": [],
+      "minimumAndroidApi": null,
+      "minimumRamBytes": null,
+      "minimumStorageBytes": null,
+      "repoId": "google/gemma-3n-E4B-it-litert-lm",
+      "revision": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+      "filename": "gemma-3n-E4B-it-int4.litertlm",
+      "sizeBytes": 4919541760,
+      "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4",
+      "metadataSource": "https://huggingface.co/api/models/google/gemma-3n-E4B-it-litert-lm/revision/297ed75955702dec3503e00c2c2ecbbf475300bc?blobs=true",
+      "blockers": ["Ramu 0.16.1 CPU initialization blocked by the app's free-RAM guard during this device test"]
+    }
+  ]
+}
