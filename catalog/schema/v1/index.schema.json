@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:buddy:catalog:index:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "catalogVersion", "generations"],
+  "properties": {
+    "schemaVersion": {"type": "integer", "const": 1},
+    "catalogVersion": {"type": "integer", "minimum": 1},
+    "generations": {
+      "type": "array", "minItems": 1, "maxItems": 32,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["generationId", "path", "sizeBytes", "sha256"],
+        "properties": {
+          "generationId": {"$ref": "#/$defs/id"},
+          "path": {"type": "string", "pattern": "^generations/[a-z0-9]+(?:-[a-z0-9]+)*\\.json$", "maxLength": 96},
+          "sizeBytes": {"type": "integer", "minimum": 1, "maximum": 262144},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
