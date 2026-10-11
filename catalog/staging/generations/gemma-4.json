@@ -1,0 +1,52 @@
+{
+  "familyId": "gemma",
+  "generationId": "gemma-4",
+  "models": [
+    {
+      "modelId": "gemma-4-e2b",
+      "variantId": "gemma-4-e2b-cpu",
+      "status": "pending-verification",
+      "artifactVersion": 1,
+      "format": "litertlm",
+      "testedBackends": [],
+      "minimumAndroidApi": 29,
+      "minimumRamBytes": 2621440000,
+      "minimumStorageBytes": 2722365440,
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "minimumDeviceRamBytes": 8000000000,
+      "supportedBackends": ["cpu"],
+      "requirementsSource": "https://github.com/google-ai-edge/gallery/blob/main/model_allowlists/1_0_16.json",
+      "license": "apache-2.0",
+      "gated": false,
+      "revision": "b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1",
+      "filename": "gemma-4-E2B-it.litertlm",
+      "sizeBytes": 2588147712,
+      "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+      "metadataSource": "https://huggingface.co/api/models/litert-community/gemma-4-E2B-it-litert-lm/revision/b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1?blobs=true",
+      "blockers": ["Ramu 0.16.1 CPU load and inference untested; device RAM follows the Gallery allowlist and storage uses the app's artifact-plus-reserve policy"]
+    },
+    {
+      "modelId": "gemma-4-e4b",
+      "variantId": "gemma-4-e4b-cpu",
+      "status": "pending-verification",
+      "artifactVersion": 1,
+      "format": "litertlm",
+      "testedBackends": [],
+      "minimumAndroidApi": 29,
+      "minimumRamBytes": 5767168000,
+      "minimumStorageBytes": 3793747968,
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "minimumDeviceRamBytes": 12000000000,
+      "supportedBackends": ["cpu"],
+      "requirementsSource": "https://github.com/google-ai-edge/gallery/blob/main/model_allowlists/1_0_16.json",
+      "license": "apache-2.0",
+      "gated": false,
+      "revision": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
+      "filename": "gemma-4-E4B-it.litertlm",
+      "sizeBytes": 3659530240,
+      "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+      "metadataSource": "https://huggingface.co/api/models/litert-community/gemma-4-E4B-it-litert-lm/revision/2eee7ac325f20eb8c9ac1d0e972f7c84663062da?blobs=true",
+      "blockers": ["Ramu 0.16.1 CPU load and inference untested; device RAM follows the Gallery allowlist and storage uses the app's artifact-plus-reserve policy"]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "artifact": {
+    "repoId": "google/gemma-3n-E2B-it-litert-lm",
+    "path": "gemma-3n-E2B-it-int4.litertlm",
+    "sizeBytes": 3655827456,
+    "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6",
+    "verifiedRevision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+    "bytesVerified": true,
+    "formatVerified": true
+  },
+  "contract": {
+    "format": "litertlm",
+    "runtime": {"minVersion": "0.16.1", "maxVersion": "0.16.1"},
+    "testedBackends": ["cpu"],
+    "minApi": 36,
+    "abis": ["arm64-v8a"],
+    "minRamBytes": 2621440000,
+    "minDeviceRamBytes": 8000000000,
+    "recommendedRamBytes": 8000000000,
+    "minStorageBytes": 3790045184,
+    "hardware": {"socIds": [], "driverIds": []}
+  },
+  "license": "gemma",
+  "gated": true,
+  "accessMode": "manual",
+  "tests": [
+    {
+      "device": "POCO 2511FPC34G (MT6899)",
+      "apkSha256": "4a14081add5b2e10f25f5dced731e885aa2c5b4bf685214a4678494bacdbd247",
+      "testedAt": "2026-10-11",
+      "log": "catalog/evidence/gemma-3n-e2b-device-observation.md",
+      "runtime": "0.16.1",
+      "backend": "cpu",
+      "abi": "arm64-v8a",
+      "api": 36,
+      "socId": "MT6899",
+      "load": "pass",
+      "inference": "pass"
+    }
+  ]
+}

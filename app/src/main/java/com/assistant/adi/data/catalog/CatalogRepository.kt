@@ -194,7 +194,13 @@ class CatalogRepository(
             CatalogGeneration("gemma", "gemma-3", "Gemma 3n", "unavailable",
                 AiModelCatalog.AVAILABLE_MODELS.map {
                     CatalogModel(it.id, "gemma", "gemma-3", it.name, it.description, "unavailable", emptyList())
-                })
+                }),
+            CatalogGeneration("gemma", "gemma-4", "Gemma 4", "unavailable", listOf(
+                CatalogModel("gemma-4-e2b", "gemma", "gemma-4", "Gemma 4 E2B IT",
+                    "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.", "unavailable", emptyList()),
+                CatalogModel("gemma-4-e4b", "gemma", "gemma-4", "Gemma 4 E4B IT",
+                    "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.", "unavailable", emptyList())
+            ))
         ), CatalogSource.LOCAL_FALLBACK)
     }
 }

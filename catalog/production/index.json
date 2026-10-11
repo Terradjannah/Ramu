@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 1,
+  "generations": [
+    {
+      "generationId": "gemma-3",
+      "path": "generations/gemma-3.json",
+      "sizeBytes": 3239,
+      "sha256": "6f06a263043dd86ac523da2cfae97efc7a880889ab10f41a3d9dd6899a6c64c5"
+    },
+    {
+      "generationId": "gemma-4",
+      "path": "generations/gemma-4.json",
+      "sizeBytes": 3211,
+      "sha256": "dbce97b9e828834ae838534a26e90d0f0015911561d6d2bd293b771434bdc9af"
+    }
+  ]
+}

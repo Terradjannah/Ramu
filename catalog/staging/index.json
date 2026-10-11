@@ -1,0 +1,8 @@
+{
+  "reviewSchemaVersion": 1,
+  "publication": "staging-only",
+  "generations": [
+    "generations/gemma-3.json",
+    "generations/gemma-4.json"
+  ]
+}

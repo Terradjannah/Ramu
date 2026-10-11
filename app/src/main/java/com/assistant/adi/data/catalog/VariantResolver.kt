@@ -1,7 +1,7 @@
 package com.assistant.adi.data.catalog
 
 enum class VariantIssue {
-    MODEL_UNAVAILABLE, FORMAT, RUNTIME, API, ABI, STORAGE, BACKEND, SOC, DRIVER
+    MODEL_UNAVAILABLE, FORMAT, RUNTIME, API, ABI, STORAGE, RAM, BACKEND, SOC, DRIVER
 }
 
 enum class VariantWarning { RAM_BELOW_MINIMUM, RAM_BELOW_RECOMMENDED }
@@ -27,7 +27,7 @@ object VariantResolver {
     private val availableBackends = listOf("cpu")
 
     fun resolve(model: CatalogModel, device: DeviceCapabilities): VariantSelection {
-        val evaluations = model.variants.map { evaluate(it, device, model.status == "available") }
+        val evaluations = model.variants.map { evaluate(it, device, model.status != "unavailable", model.status == "candidate") }
         val selected = evaluations.filter { it.compatible }.minWithOrNull(
             compareBy<VariantEvaluation> { it.variant.minRamBytes }
                 .thenBy { it.variant.minStorageBytes }
@@ -36,7 +36,7 @@ object VariantResolver {
         return VariantSelection(selected, evaluations)
     }
 
-    fun evaluate(variant: CatalogVariant, device: DeviceCapabilities, modelAvailable: Boolean = true): VariantEvaluation {
+    fun evaluate(variant: CatalogVariant, device: DeviceCapabilities, modelAvailable: Boolean = true, candidate: Boolean = false): VariantEvaluation {
         val issues = mutableListOf<VariantIssue>()
         if (!modelAvailable) issues += VariantIssue.MODEL_UNAVAILABLE
         if (variant.format != FORMAT) issues += VariantIssue.FORMAT
@@ -47,7 +47,9 @@ object VariantResolver {
         if (device.apiLevel < variant.minApi) issues += VariantIssue.API
         if (device.abis.intersect(variant.abis.toSet()).isEmpty()) issues += VariantIssue.ABI
         if (device.availableStorageBytes < variant.minStorageBytes) issues += VariantIssue.STORAGE
-        val backend = availableBackends.firstOrNull { it in variant.testedBackends }
+        // Android reports usable physical RAM below the marketed 8/12 GB capacity.
+        if (variant.minDeviceRamBytes > 0 && device.totalRamBytes < variant.minDeviceRamBytes * 9 / 10) issues += VariantIssue.RAM
+        val backend = availableBackends.firstOrNull { it in (if (candidate) variant.candidateBackends else variant.testedBackends) }
         if (backend == null) issues += VariantIssue.BACKEND
         if (variant.socIds.isNotEmpty() && (device.socId == null || device.socId !in variant.socIds)) issues += VariantIssue.SOC
         if (variant.driverIds.isNotEmpty() && (device.driverId == null || device.driverId !in variant.driverIds)) issues += VariantIssue.DRIVER

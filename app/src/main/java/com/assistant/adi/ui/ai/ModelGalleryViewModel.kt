@@ -113,13 +113,14 @@ class ModelGalleryViewModel(application: Application) : AndroidViewModel(applica
             try {
                 catalog.loadCache()
                 val variant = approvedVariant(model)
-                    ?: throw IllegalStateException("Varian terverifikasi yang kompatibel belum tersedia untuk model ini.")
+                    ?: throw IllegalStateException("Varian katalog yang cocok dengan perangkat belum tersedia.")
                 val destination = ModelFiles.forVariant(directory, variant)
                 val downloaded = ModelDownloader.download(destination, variant, _hfToken.value,
                     AiModelCatalog.getModelById(model.id)?.let { File(directory, it.fileName) }) { bytes,total,speed,eta ->
                     update(model.id,ModelItemUiState.Downloading(bytes.toFloat()/total,speed,eta,bytes,total))
                 }
-                if(settings.aiSettingsFlow.first().activeModelPath.isBlank()) settings.setActiveModel(downloaded.name, "${variant.variantId}|${variant.sha256}")
+                if(!model.isDownloadCandidate && settings.aiSettingsFlow.first().activeModelPath.isBlank())
+                    settings.setActiveModel(downloaded.name, "${variant.variantId}|${variant.sha256}")
                 update(model.id,ModelItemUiState.Downloaded(downloaded.length(),settings.aiSettingsFlow.first().activeModelPath==downloaded.name))
                 checkStorage()
             } catch(e: CancellationException) { throw e }
