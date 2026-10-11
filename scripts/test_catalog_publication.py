@@ -104,6 +104,18 @@ class CatalogPublicationTest(unittest.TestCase):
              patch("sys.argv", ["classify_catalog_update.py", "--base", "previous", "--last-published", "--enforce"]):
             self.assertEqual(1, classify_catalog_update.main())
 
+    def test_first_catalog_release_without_protected_baseline_needs_review(self):
+        missing = ValueError("missing or invalid protected baseline catalog/production/index.json")
+        with patch.object(classify_catalog_update, "last_published_commit", return_value=None), \
+             patch.object(classify_catalog_update, "classify", side_effect=missing), \
+             patch.object(classify_catalog_update, "models", return_value=({"catalogVersion": 1}, {})), \
+             patch.object(classify_catalog_update, "git_json", return_value={"schemaVersion": 1, "models": []}), \
+             patch.object(classify_catalog_update, "check_registry", return_value={}), \
+             patch.object(classify_catalog_update, "git", return_value="catalog/production/index.json\n"), \
+             patch.object(classify_catalog_update, "approved_merge", return_value=False), \
+             patch("sys.argv", ["classify_catalog_update.py", "--base", "base", "--last-published", "--enforce"]):
+            self.assertEqual(1, classify_catalog_update.main())
+
 
 if __name__ == "__main__":
     unittest.main()

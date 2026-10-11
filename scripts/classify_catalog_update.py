@@ -175,7 +175,17 @@ def main():
                 if any(path.startswith(("catalog/production/", "catalog/registry/", "catalog/schema/", "scripts/", ".github/workflows/")) for path in pending):
                     raise ValueError("unpublished catalog or release changes precede this push")
                 base = published
-        result = classify(base, args.head)
+        try:
+            result = classify(base, args.head)
+        except ValueError as exc:
+            if not (args.last_published and not published and
+                    str(exc) == "missing or invalid protected baseline catalog/production/index.json"):
+                raise
+            first_index, _ = models(args.head)
+            check_registry(git_json(args.head, "catalog/registry/models.json"))
+            result = {"risk": "review", "autoPublish": False,
+                      "changedFiles": sorted(git("diff", "--name-only", base, args.head).splitlines()),
+                      "previousVersion": None, "candidateVersion": first_index["catalogVersion"]}
         if args.last_published and not published:
             result["risk"], result["autoPublish"] = "review", False
         print(json.dumps(result, sort_keys=True))
