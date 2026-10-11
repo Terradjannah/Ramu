@@ -7,8 +7,8 @@ import os
 import sys
 
 from pathlib import Path
-from classify_catalog_update import classify, api_json
-from validate_catalog import validate, read_json, MAX_INDEX_BYTES, MAX_GENERATION_BYTES
+from classify_catalog_update import classify, api_json, models, git_json, git
+from validate_catalog import validate, read_json, check_registry, MAX_INDEX_BYTES, MAX_GENERATION_BYTES
 from validate_catalog_evidence import validate_evidence, IDENTITY
 
 
@@ -71,7 +71,16 @@ def main():
         validate(candidate / "catalog/production", candidate / "catalog/registry/models.json", trusted / "catalog/schema/v1")
         validate_evidence(candidate / "catalog/production", candidate / "catalog/evidence")
         check_evidence_reuse(candidate, trusted)
-        result = classify(args.base, "HEAD")
+        try:
+            result = classify(args.base, "HEAD")
+        except ValueError as exc:
+            if str(exc) != "missing or invalid protected baseline catalog/production/index.json":
+                raise
+            first_index, _ = models("HEAD")
+            check_registry(git_json("HEAD", "catalog/registry/models.json"))
+            result = {"risk": "review", "autoPublish": False,
+                      "changedFiles": sorted(git("diff", "--name-only", args.base, "HEAD").splitlines()),
+                      "previousVersion": None, "candidateVersion": first_index["catalogVersion"]}
         print(json.dumps(result, sort_keys=True))
         if not result["autoPublish"]:
             reviewers = set(os.environ.get("CATALOG_REVIEWERS", "").split(",")) - {""}
