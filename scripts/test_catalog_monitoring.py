@@ -25,7 +25,7 @@ class CatalogMonitoringTest(unittest.TestCase):
         self.registry_path = self.root / 'catalog/registry/models.json'
         self.registry = json.loads(self.registry_path.read_text())
         for other in self.registry['models'][1:]:
-            other.update(enabled=False, trackUpdates=False)
+            other.update(enabled=True, trackUpdates=False)
         row = self.registry['models'][0]
         row.update(enabled=True, trackUpdates=True)
         row['updatePolicy'].update(metadataAutoPublish=True, unchangedArtifactAutoPublish=True)
@@ -152,7 +152,7 @@ class CatalogMonitoringTest(unittest.TestCase):
 
     def test_new_variant_never_added_automatically(self):
         self.model.update(status='unavailable', variants=[])
-        self.generation['status'] = 'unavailable'
+        self.generation['status'] = 'available'  # E4B remains a downloadable candidate.
         self.write_catalog()
         result = self.prepare()
         self.assertEqual('review', result['risk'])

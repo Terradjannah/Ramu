@@ -14,7 +14,7 @@ from pathlib import Path
 from check_huggingface import observe, model_info, artifact_info, write_json
 from classify_catalog_update import RANK, model_risk
 from validate_catalog import ROOT, read_json, validate, MAX_INDEX_BYTES, MAX_GENERATION_BYTES, MAX_REGISTRY_BYTES, check_registry
-from validate_catalog_evidence import validate_evidence, validate_variant_evidence
+from validate_catalog_evidence import validate_evidence, validate_variant_evidence, validate_candidate_evidence
 
 
 def prepare(root, output, fetch=model_info):
@@ -60,6 +60,19 @@ def prepare(root, output, fetch=model_info):
                     changes.append({"modelId": model_id, "before": previous, "after": current})
             continue
         for variant in matches:
+            if model["status"] == "candidate":
+                validate_candidate_evidence(variant, model_id, generation_id, staging)
+                key = (variant["repoId"], variant["revision"], variant["path"])
+                old_info = artifact_info(fetch(key[0], key[1]), key[0], key[2])
+                if any(old_info[k] != variant[k] for k in ("revision", "sizeBytes", "sha256")):
+                    raise ValueError("protected candidate does not match pinned HF metadata")
+                before = {k: variant[k] for k in ("revision", "sizeBytes", "sha256")}
+                after = {k: observation[k] for k in before}
+                if before != after or any(old_info[k] != observation[k] for k in ("license", "gated", "accessMode")):
+                    changes.append({"variantId": variant["variantId"], "before": before, "after": after})
+                    blocked.append({"modelId": model_id, "reason": "candidate artifact or access change requires metadata review"})
+                    risk, auto = "review", False
+                continue
             verified = validate_variant_evidence(variant, root / "catalog/evidence")
             key = (variant["repoId"], variant["revision"], variant["path"])
             if key not in old_cache:

@@ -46,7 +46,9 @@ data class CatalogVariant(
     val sizeBytes: Long,
     val sha256: String,
     val license: String,
-    val gated: Boolean
+    val gated: Boolean,
+    val minDeviceRamBytes: Long = 0,
+    val candidateBackends: List<String> = emptyList()
 )
 
 sealed interface CatalogState {

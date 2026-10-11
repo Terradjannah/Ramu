@@ -23,7 +23,7 @@
         "generationId": {"$ref": "#/$defs/id"},
         "name": {"type": "string", "minLength": 1, "maxLength": 120},
         "description": {"type": "string", "minLength": 1, "maxLength": 500},
-        "status": {"enum": ["available", "unavailable"]},
+        "status": {"enum": ["available", "candidate", "unavailable"]},
         "variants": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/variant"}}
       }
     },
@@ -35,10 +35,12 @@
         "artifactVersion": {"type": "integer", "minimum": 1},
         "format": {"const": "litertlm"},
         "runtime": {"type": "object", "additionalProperties": false, "required": ["minVersion", "maxVersion"], "properties": {"minVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$", "maxLength": 24}, "maxVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$", "maxLength": 24}}},
-        "testedBackends": {"type": "array", "minItems": 1, "maxItems": 3, "uniqueItems": true, "items": {"enum": ["cpu", "gpu", "npu"]}},
+        "testedBackends": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"enum": ["cpu", "gpu", "npu"]}},
+        "candidateBackends": {"type": "array", "minItems": 1, "maxItems": 3, "uniqueItems": true, "items": {"enum": ["cpu", "gpu", "npu"]}},
         "minApi": {"type": "integer", "minimum": 29, "maximum": 100},
         "abis": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": {"enum": ["arm64-v8a", "armeabi-v7a", "x86_64", "x86"]}},
         "minRamBytes": {"type": "integer", "minimum": 1},
+        "minDeviceRamBytes": {"type": "integer", "minimum": 1},
         "recommendedRamBytes": {"type": "integer", "minimum": 1},
         "minStorageBytes": {"type": "integer", "minimum": 1},
         "hardware": {"type": "object", "additionalProperties": false, "required": ["socIds", "driverIds"], "properties": {"socIds": {"type": "array", "maxItems": 16, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}, "driverIds": {"type": "array", "maxItems": 16, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}}},
@@ -47,7 +49,7 @@
         "path": {"type": "string", "pattern": "^[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*\\.litertlm$", "maxLength": 200},
         "sizeBytes": {"type": "integer", "minimum": 1},
         "sha256": {"$ref": "#/$defs/sha256"},
-        "evidence": {"type": "object", "additionalProperties": false, "required": ["artifactSha256Verified", "artifactSource", "license", "gated", "runtimeTest", "backendTests"], "properties": {"artifactSha256Verified": {"const": true}, "artifactSource": {"type": "string", "minLength": 1, "maxLength": 300}, "license": {"type": "string", "minLength": 1, "maxLength": 100}, "gated": {"type": "boolean"}, "runtimeTest": {"type": "string", "minLength": 1, "maxLength": 300}, "backendTests": {"type": "object", "minProperties": 1, "maxProperties": 3, "additionalProperties": {"type": "string", "minLength": 1, "maxLength": 300}, "propertyNames": {"enum": ["cpu", "gpu", "npu"]}}}}
+        "evidence": {"type": "object", "additionalProperties": false, "required": ["artifactSha256Verified", "artifactSource", "license", "gated", "runtimeTest", "backendTests"], "properties": {"artifactSha256Verified": {"const": true}, "artifactSource": {"type": "string", "minLength": 1, "maxLength": 300}, "license": {"type": "string", "minLength": 1, "maxLength": 100}, "gated": {"type": "boolean"}, "runtimeTest": {"type": "string", "maxLength": 300}, "backendTests": {"type": "object", "maxProperties": 3, "additionalProperties": {"type": "string", "minLength": 1, "maxLength": 300}, "propertyNames": {"enum": ["cpu", "gpu", "npu"]}}}}
       }
     }
   }

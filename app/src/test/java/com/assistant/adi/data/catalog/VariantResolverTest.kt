@@ -74,4 +74,13 @@ class VariantResolverTest {
         assertTrue(VariantResolver.hasRamForInitialization(result.selected!!.variant, 1_000))
         assertTrue(!VariantResolver.hasRamForInitialization(result.selected!!.variant, 999))
     }
+
+    @Test fun candidateIsDownloadableOnlyOnMatchingDevice() {
+        val candidate = variant(backends = emptyList()).copy(candidateBackends = listOf("cpu"), minDeviceRamBytes = 8_000)
+        val model = model(candidate).copy(status = "candidate")
+        assertEquals("cpu", VariantResolver.resolve(model, device).selected?.backend)
+        val constrained = VariantResolver.resolve(model, device.copy(totalRamBytes = 7_000))
+        assertNull(constrained.selected)
+        assertEquals(listOf(VariantIssue.RAM), constrained.evaluations.single().issues)
+    }
 }

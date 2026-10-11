@@ -76,30 +76,35 @@ class CatalogVerifier(spki: ByteArray) {
             row.fields("modelId", "familyId", "generationId", "name", "description", "status", "variants")
             val modelId = row.string("modelId", ID, 64)
             require(row.string("familyId", ID, 64) == family && row.string("generationId", ID, 64) == id)
-            val modelStatus = row.enum("status", "available", "unavailable")
-            val variants = row.array("variants", 0, 16).map { variant(it.asJsonObject) }
-            require((modelStatus == "available") == variants.isNotEmpty())
+            val modelStatus = row.enum("status", "available", "candidate", "unavailable")
+            val variants = row.array("variants", 0, 16).map { variant(it.asJsonObject, modelStatus == "candidate") }
+            require((modelStatus != "unavailable") == variants.isNotEmpty())
             CatalogModel(modelId, family, id, row.string("name", 120), row.string("description", 500), modelStatus, variants)
         }
         require(models.distinctBy { it.modelId }.size == models.size)
-        require((status == "available") == models.any { it.status == "available" })
+        require((status == "available") == models.any { it.status != "unavailable" })
         return CatalogGeneration(family, id, root.string("name", 120), status, models)
     }
 
-    private fun variant(row: JsonObject): CatalogVariant {
-        row.fields("variantId", "artifactVersion", "format", "runtime", "testedBackends", "minApi", "abis", "minRamBytes", "recommendedRamBytes", "minStorageBytes", "hardware", "repoId", "revision", "path", "sizeBytes", "sha256", "evidence")
+    private fun variant(row: JsonObject, candidate: Boolean): CatalogVariant {
+        val required = setOf("variantId", "artifactVersion", "format", "runtime", "testedBackends", "minApi", "abis", "minRamBytes", "recommendedRamBytes", "minStorageBytes", "hardware", "repoId", "revision", "path", "sizeBytes", "sha256", "evidence")
+        require(row.keySet().containsAll(required) && row.keySet().all { it in required || it in setOf("minDeviceRamBytes", "candidateBackends") })
         val runtime = row.obj("runtime").also { it.fields("minVersion", "maxVersion") }
         val hardware = row.obj("hardware").also { it.fields("socIds", "driverIds") }
         val evidence = row.obj("evidence").also { it.fields("artifactSha256Verified", "artifactSource", "license", "gated", "runtimeTest", "backendTests") }
         require(evidence.bool("artifactSha256Verified"))
-        val backends = row.array("testedBackends", 1, 3).map { it.asString.also { value -> require(value in setOf("cpu", "gpu", "npu")) } }
+        val backends = row.array("testedBackends", if (candidate) 0 else 1, 3).map { it.asString.also { value -> require(value in setOf("cpu", "gpu", "npu")) } }
+        val candidateBackends = if (row.has("candidateBackends")) row.array("candidateBackends", 1, 3).map { it.asString } else emptyList()
         val tests = evidence.obj("backendTests")
         require(tests.keySet() == backends.toSet() && backends.distinct().size == backends.size)
         tests.keySet().forEach { tests.string(it, 300) }
+        if (candidate) require(backends.isEmpty() && candidateBackends == listOf("cpu") && evidence.get("runtimeTest").asString == "" && row.has("minDeviceRamBytes"))
+        else require(candidateBackends.isEmpty())
         val abis = row.array("abis", 1, 4).map { it.asString.also { value -> require(value in setOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86")) } }
         require(abis.distinct().size == abis.size)
         val minRam = row.long("minRamBytes").also { require(it > 0) }
         val recommendedRam = row.long("recommendedRamBytes").also { require(it >= minRam) }
+        if (candidate) require(row.long("minDeviceRamBytes") >= recommendedRam)
         val size = row.long("sizeBytes").also { require(it > 0) }
         val storage = row.long("minStorageBytes").also { require(it >= size) }
         val minRuntime = runtime.string("minVersion", VERSION, 24)
@@ -113,8 +118,11 @@ class CatalogVerifier(spki: ByteArray) {
             hardware.ids("socIds"), hardware.ids("driverIds"), row.string("repoId", REPO, 128),
             row.string("revision", COMMIT, 40), row.string("path", ARTIFACT_PATH, 200), size,
             row.string("sha256", SHA, 64), evidence.string("license", 100).also {
-                evidence.string("artifactSource", 300); evidence.string("runtimeTest", 300)
-            }, evidence.bool("gated"))
+                evidence.string("artifactSource", 300)
+                if (!candidate) evidence.string("runtimeTest", 300)
+            }, evidence.bool("gated"),
+            if (row.has("minDeviceRamBytes")) row.long("minDeviceRamBytes").also { require(it > 0) } else 0,
+            candidateBackends)
     }
 
     fun checkDigest(raw: ByteArray, ref: GenerationRef) {

@@ -95,7 +95,7 @@ class CatalogValidatorTest(unittest.TestCase):
 
     def test_missing_backend_evidence(self):
         self.add_variant()["evidence"]["backendTests"] = {}
-        self.check_rejected("too few properties")
+        self.check_rejected("verified backend without matching test evidence")
 
     def test_weak_catalog_version(self):
         self.index["catalogVersion"] = 0

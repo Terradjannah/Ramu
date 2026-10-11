@@ -27,7 +27,8 @@ data class AiModelItem(
     val backend: String = "CPU",
     val catalogStatus: String = "Lokal",
     val requiredStorageBytes: Long = 0L,
-    val displayVariant: CatalogVariant? = null
+    val displayVariant: CatalogVariant? = null,
+    val isDownloadCandidate: Boolean = false
 )
 
 object AiModelCatalog {
@@ -87,18 +88,19 @@ object AiModelCatalog {
                 val useLegacy = legacyFile?.let(ModelFiles::isReady) == true
                 val backendLabel = when {
                     useLegacy -> "CPU"
-                    selected?.backend != null -> selected.backend.uppercase()
+                    selected?.backend != null -> "${selected.backend.uppercase()}${if (model.status == "candidate") " (kandidat)" else ""}"
                     else -> "Belum diverifikasi"
                 }
                 val ramLabel = if (legacy != null && (useLegacy || displayVariant == null)) legacy.ramUsageLabel else
-                    displayVariant?.recommendedRamBytes?.let { "%.1f GB RAM perangkat".format(it / 1_000_000_000.0) }
+                    displayVariant?.minDeviceRamBytes?.takeIf { it > 0 }?.let { "Perangkat min. %.0f GB RAM".format(it / 1_000_000_000.0) }
+                        ?: displayVariant?.recommendedRamBytes?.let { "%.1f GB RAM perangkat".format(it / 1_000_000_000.0) }
                         ?: "Persyaratan RAM belum diverifikasi"
                 val fileName = if (useLegacy) legacy!!.fileName else
                     variant?.let { ModelFiles.forVariant(directory, it).name } ?: legacy?.fileName.orEmpty()
                 val issue = when {
                     useLegacy -> null
                     snapshot.source != CatalogSource.VERIFIED -> "Katalog offline awal; varian unduhan belum tersedia"
-                    generation.status != "available" || model.status != "available" -> "Belum tersedia di katalog"
+                    generation.status != "available" || model.status == "unavailable" -> "Belum tersedia di katalog"
                     selected == null -> selection.evaluations.flatMap { it.issues }.distinct().joinToString { it.name.lowercase().replace('_', ' ') }
                         .ifBlank { "Belum ada varian terverifikasi" }
                     else -> null
@@ -114,9 +116,11 @@ object AiModelCatalog {
                     when {
                         snapshot.source != CatalogSource.VERIFIED -> "Katalog offline"
                         model.status == "available" -> "Katalog terverifikasi"
+                        model.status == "candidate" -> "Kandidat unduhan • inferensi belum diuji di Ramu"
                         else -> "Kandidat katalog"
                     },
-                    model.variants.minOfOrNull { it.minStorageBytes } ?: 0L, displayVariant)
+                    model.variants.minOfOrNull { it.minStorageBytes } ?: 0L, displayVariant,
+                    model.status == "candidate")
             }
         }
         val knownFiles = items.flatMap { item -> listOfNotNull(item.fileName.takeIf { it.isNotBlank() }, getModelById(item.id)?.fileName) }.toSet()

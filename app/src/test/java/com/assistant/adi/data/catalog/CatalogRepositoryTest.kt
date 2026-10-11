@@ -65,6 +65,17 @@ class CatalogRepositoryTest {
         assertEquals(2, repository.state.value.snapshot.version)
     }
 
+    @Test fun signedCandidateParsesWithoutClaimingInferenceTest() = runBlocking {
+        val candidate = """{"schemaVersion":1,"familyId":"gemma","generationId":"gemma-3","name":"Gemma 3n","status":"available","models":[{"modelId":"gemma-3n-e4b","familyId":"gemma","generationId":"gemma-3","name":"E4B","description":"Candidate","status":"candidate","variants":[{"variantId":"e4b-cpu","artifactVersion":1,"format":"litertlm","runtime":{"minVersion":"0.16.1","maxVersion":"0.16.1"},"testedBackends":[],"candidateBackends":["cpu"],"minApi":29,"abis":["arm64-v8a"],"minRamBytes":50,"minDeviceRamBytes":8000000000,"recommendedRamBytes":100,"minStorageBytes":200,"hardware":{"socIds":[],"driverIds":[]},"repoId":"owner/repo","revision":"${"a".repeat(40)}","path":"model.litertlm","sizeBytes":100,"sha256":"${"b".repeat(64)}","evidence":{"artifactSha256Verified":true,"artifactSource":"metadata source","license":"gemma","gated":true,"runtimeTest":"","backendTests":{}}}]}]}""".toByteArray()
+        val repository = CatalogRepository(FakeTransport(release(2, candidate)), verifier, MemoryCache())
+        repository.refresh()
+        assertTrue(repository.state.value is CatalogState.Verified)
+        val model = repository.state.value.snapshot.generations.single().models.single()
+        assertEquals("candidate", model.status)
+        assertTrue(model.variants.single().testedBackends.isEmpty())
+        assertEquals(listOf("cpu"), model.variants.single().candidateBackends)
+    }
+
     @Test fun rejectedResponsesKeepLastSnapshot() = runBlocking {
         val cases = listOf<(MutableMap<String, ByteArray>) -> Unit>(
             { it["index.sig"] = "bad".toByteArray() },

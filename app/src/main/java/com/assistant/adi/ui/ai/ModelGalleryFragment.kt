@@ -52,7 +52,15 @@ class ModelGalleryFragment : Fragment() {
     private fun setupRecyclerView() {
         adapter = ModelGalleryAdapter(
             onDownloadClick = { item ->
-                if (viewModel.hfToken.value.isBlank()) showAccessSheet(item) else viewModel.startDownload(item)
+                if (item.displayVariant?.gated == true && viewModel.hfToken.value.isBlank()) showAccessSheet(item)
+                else if (item.isDownloadCandidate) {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setTitle("Unduh kandidat ${item.shortName}?")
+                        .setMessage("Artifact ${item.sizeLabel} sudah dipin dan akan diperiksa SHA-256 setelah diunduh. Inferensi pada Ramu belum teruji untuk model ini; RAM dan ruang kosong yang cukup tidak menjamin model akan berjalan.")
+                        .setPositiveButton("Unduh") { _, _ -> viewModel.startDownload(item) }
+                        .setNegativeButton("Kembali", null)
+                        .show().withActionIcons(R.drawable.ic_ms_download, R.drawable.ic_ms_arrow_back)
+                } else viewModel.startDownload(item)
             },
             onPauseClick = viewModel::pauseDownload,
             onCancelClick = ::confirmCancelDownload,

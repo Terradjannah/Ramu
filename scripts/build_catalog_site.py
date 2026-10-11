@@ -22,7 +22,7 @@ def build(production, registry, schema, output, key):
     if output.exists():
         raise ValueError("output must be a new staging directory")
     validate(production, registry, schema)
-    validate_evidence(production, production.parent / "evidence")
+    validate_evidence(production, registry.parent.parent / "evidence")
     index, _ = read_json(production / "index.json", MAX_INDEX_BYTES)
     parent = output.parent
     parent.mkdir(parents=True, exist_ok=True)

@@ -18,7 +18,32 @@ def validate_evidence(production, evidence_dir):
         generation, _ = read_json(production / entry["path"], MAX_GENERATION_BYTES)
         for model in generation["models"]:
             for variant in model["variants"]:
-                validate_variant_evidence(variant, evidence_dir)
+                if model["status"] == "candidate":
+                    validate_candidate_evidence(variant, model["modelId"], generation["generationId"], evidence_dir.parent / "staging")
+                else:
+                    validate_variant_evidence(variant, evidence_dir)
+
+
+def validate_candidate_evidence(variant, model_id, generation_id, staging_dir):
+    staged, _ = read_json(staging_dir / "generations" / f"{generation_id}.json", MAX_GENERATION_BYTES)
+    matches = [row for row in staged["models"] if row.get("modelId") == model_id and row.get("variantId") == variant["variantId"]]
+    if len(matches) != 1:
+        raise ValueError("candidate missing unique curated staging record")
+    row = matches[0]
+    expected = {"repoId": variant["repoId"], "revision": variant["revision"], "filename": variant["path"],
+                "artifactVersion": variant["artifactVersion"], "format": variant["format"],
+                "sizeBytes": variant["sizeBytes"], "sha256": variant["sha256"],
+                "minimumDeviceRamBytes": variant["minDeviceRamBytes"], "minimumAndroidApi": variant["minApi"],
+                "minimumRamBytes": variant["minRamBytes"], "minimumStorageBytes": variant["minStorageBytes"],
+                "license": variant["evidence"]["license"], "gated": variant["evidence"]["gated"]}
+    if any(row.get(key) != value for key, value in expected.items()):
+        raise ValueError("candidate metadata or device floor differs from curated staging")
+    if row.get("status") != "pending-verification" or row.get("metadataSource") != variant["evidence"]["artifactSource"]:
+        raise ValueError("candidate provenance/status missing")
+    if row.get("supportedBackends") != variant["candidateBackends"] or not row.get("requirementsSource"):
+        raise ValueError("candidate backend or device requirements lack source")
+    if variant["evidence"]["runtimeTest"] or variant["evidence"]["backendTests"] or variant["testedBackends"]:
+        raise ValueError("candidate incorrectly claims APK inference evidence")
 
 
 def validate_variant_evidence(variant, evidence_dir):
@@ -34,7 +59,10 @@ def validate_variant_evidence(variant, evidence_dir):
         raise ValueError("evidence must bind a verified pinned commit")
     if artifact.get("bytesVerified") is not True or artifact.get("formatVerified") is not True:
         raise ValueError("artifact byte/format verification missing")
-    if record.get("contract") != {key: variant[key] for key in CONTRACT}:
+    expected_contract = {key: variant[key] for key in CONTRACT}
+    if "minDeviceRamBytes" in variant:
+        expected_contract["minDeviceRamBytes"] = variant["minDeviceRamBytes"]
+    if record.get("contract") != expected_contract:
         raise ValueError("runtime/backend/hardware evidence mismatch")
     # Extend this gate only with reviewed APK/native-library support and device evidence.
     if variant["testedBackends"] != ["cpu"] or variant["runtime"] != {"minVersion": "0.16.1", "maxVersion": "0.16.1"}:
@@ -87,7 +115,7 @@ def main():
     except (ValueError, OSError, KeyError, TypeError) as exc:
         print(f"evidence rejected: {exc}", file=sys.stderr)
         return 1
-    print("artifact/runtime/inference evidence valid (metadata check only)")
+    print("catalog evidence valid (candidate metadata and verified-model test records)")
     return 0
 
 

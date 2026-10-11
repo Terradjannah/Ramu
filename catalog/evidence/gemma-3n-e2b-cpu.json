@@ -16,6 +16,7 @@
     "minApi": 36,
     "abis": ["arm64-v8a"],
     "minRamBytes": 2621440000,
+    "minDeviceRamBytes": 8000000000,
     "recommendedRamBytes": 8000000000,
     "minStorageBytes": 3790045184,
     "hardware": {"socIds": [], "driverIds": []}

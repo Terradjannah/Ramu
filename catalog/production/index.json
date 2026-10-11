@@ -5,14 +5,14 @@
     {
       "generationId": "gemma-3",
       "path": "generations/gemma-3.json",
-      "sizeBytes": 1974,
-      "sha256": "277d5a3e9d0eba6b1dc1e745156e40dc8f42186624ff3180295e02752eb31649"
+      "sizeBytes": 3239,
+      "sha256": "6f06a263043dd86ac523da2cfae97efc7a880889ab10f41a3d9dd6899a6c64c5"
     },
     {
       "generationId": "gemma-4",
       "path": "generations/gemma-4.json",
-      "sizeBytes": 681,
-      "sha256": "c775bc5f79d175f112a95a6ceeb3bb2fe111d73a445343d955be0e4446bcbf7f"
+      "sizeBytes": 3211,
+      "sha256": "dbce97b9e828834ae838534a26e90d0f0015911561d6d2bd293b771434bdc9af"
     }
   ]
 }

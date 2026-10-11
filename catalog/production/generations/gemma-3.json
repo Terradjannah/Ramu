@@ -22,6 +22,7 @@
           "minApi": 36,
           "abis": ["arm64-v8a"],
           "minRamBytes": 2621440000,
+          "minDeviceRamBytes": 8000000000,
           "recommendedRamBytes": 8000000000,
           "minStorageBytes": 3790045184,
           "hardware": {"socIds": [], "driverIds": []},
@@ -46,9 +47,38 @@
       "familyId": "gemma",
       "generationId": "gemma-3",
       "name": "Gemma 3n E4B (IT INT4)",
-      "description": "Model lokal E4B terpasang; inferensi pada APK ini masih menunggu pengujian dengan RAM yang cukup.",
-      "status": "unavailable",
-      "variants": []
+      "description": "Kandidat CPU LiteRT-LM; unduhan memerlukan perangkat dengan RAM memadai. Inferensi pada Ramu belum teruji.",
+      "status": "candidate",
+      "variants": [
+        {
+          "variantId": "gemma-3n-e4b-cpu",
+          "artifactVersion": 1,
+          "format": "litertlm",
+          "runtime": {"minVersion": "0.16.1", "maxVersion": "0.16.1"},
+          "testedBackends": [],
+          "candidateBackends": ["cpu"],
+          "minApi": 29,
+          "abis": ["arm64-v8a"],
+          "minRamBytes": 5767168000,
+          "minDeviceRamBytes": 12000000000,
+          "recommendedRamBytes": 12000000000,
+          "minStorageBytes": 5053759488,
+          "hardware": {"socIds": [], "driverIds": []},
+          "repoId": "google/gemma-3n-E4B-it-litert-lm",
+          "revision": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+          "path": "gemma-3n-E4B-it-int4.litertlm",
+          "sizeBytes": 4919541760,
+          "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4",
+          "evidence": {
+            "artifactSha256Verified": true,
+            "artifactSource": "https://huggingface.co/api/models/google/gemma-3n-E4B-it-litert-lm/revision/297ed75955702dec3503e00c2c2ecbbf475300bc?blobs=true",
+            "license": "gemma",
+            "gated": true,
+            "runtimeTest": "",
+            "backendTests": {}
+          }
+        }
+      ]
     }
   ]
 }

@@ -3,25 +3,83 @@
   "familyId": "gemma",
   "generationId": "gemma-4",
   "name": "Gemma 4",
-  "status": "unavailable",
+  "status": "available",
   "models": [
     {
       "modelId": "gemma-4-e2b",
       "familyId": "gemma",
       "generationId": "gemma-4",
       "name": "Gemma 4 E2B IT",
-      "description": "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.",
-      "status": "unavailable",
-      "variants": []
+      "description": "Kandidat CPU LiteRT-LM untuk perangkat dengan RAM memadai; inferensi pada Ramu belum teruji.",
+      "status": "candidate",
+      "variants": [
+        {
+          "variantId": "gemma-4-e2b-cpu",
+          "artifactVersion": 1,
+          "format": "litertlm",
+          "runtime": {"minVersion": "0.16.1", "maxVersion": "0.16.1"},
+          "testedBackends": [],
+          "candidateBackends": ["cpu"],
+          "minApi": 29,
+          "abis": ["arm64-v8a"],
+          "minRamBytes": 2621440000,
+          "minDeviceRamBytes": 8000000000,
+          "recommendedRamBytes": 8000000000,
+          "minStorageBytes": 2722365440,
+          "hardware": {"socIds": [], "driverIds": []},
+          "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+          "revision": "b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1",
+          "path": "gemma-4-E2B-it.litertlm",
+          "sizeBytes": 2588147712,
+          "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+          "evidence": {
+            "artifactSha256Verified": true,
+            "artifactSource": "https://huggingface.co/api/models/litert-community/gemma-4-E2B-it-litert-lm/revision/b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1?blobs=true",
+            "license": "apache-2.0",
+            "gated": false,
+            "runtimeTest": "",
+            "backendTests": {}
+          }
+        }
+      ]
     },
     {
       "modelId": "gemma-4-e4b",
       "familyId": "gemma",
       "generationId": "gemma-4",
       "name": "Gemma 4 E4B IT",
-      "description": "Artifact LiteRT-LM kandidat; belum diuji pada APK Ramu.",
-      "status": "unavailable",
-      "variants": []
+      "description": "Kandidat CPU LiteRT-LM untuk perangkat dengan RAM memadai; inferensi pada Ramu belum teruji.",
+      "status": "candidate",
+      "variants": [
+        {
+          "variantId": "gemma-4-e4b-cpu",
+          "artifactVersion": 1,
+          "format": "litertlm",
+          "runtime": {"minVersion": "0.16.1", "maxVersion": "0.16.1"},
+          "testedBackends": [],
+          "candidateBackends": ["cpu"],
+          "minApi": 29,
+          "abis": ["arm64-v8a"],
+          "minRamBytes": 5767168000,
+          "minDeviceRamBytes": 12000000000,
+          "recommendedRamBytes": 12000000000,
+          "minStorageBytes": 3793747968,
+          "hardware": {"socIds": [], "driverIds": []},
+          "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+          "revision": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
+          "path": "gemma-4-E4B-it.litertlm",
+          "sizeBytes": 3659530240,
+          "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+          "evidence": {
+            "artifactSha256Verified": true,
+            "artifactSource": "https://huggingface.co/api/models/litert-community/gemma-4-E4B-it-litert-lm/revision/2eee7ac325f20eb8c9ac1d0e972f7c84663062da?blobs=true",
+            "license": "apache-2.0",
+            "gated": false,
+            "runtimeTest": "",
+            "backendTests": {}
+          }
+        }
+      ]
     }
   ]
 }

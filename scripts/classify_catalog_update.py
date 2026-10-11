@@ -42,8 +42,8 @@ def variant_risk(old, new):
         return "none"
     if old is None or new is None:
         return "review"
-    hard = ("format", "runtime", "testedBackends", "minApi", "abis", "minRamBytes",
-            "recommendedRamBytes", "minStorageBytes", "hardware", "repoId", "path", "evidence")
+    hard = ("format", "runtime", "testedBackends", "candidateBackends", "minApi", "abis", "minRamBytes",
+            "minDeviceRamBytes", "recommendedRamBytes", "minStorageBytes", "hardware", "repoId", "path", "evidence")
     if any(old.get(k) != new.get(k) for k in hard):
         return "review"
     if (old["sizeBytes"], old["sha256"]) != (new["sizeBytes"], new["sha256"]):

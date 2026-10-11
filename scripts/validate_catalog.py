@@ -19,8 +19,8 @@ SHA = re.compile(r"[a-f0-9]{64}\Z")
 COMMIT = re.compile(r"[a-f0-9]{40}\Z")
 ARTIFACT = re.compile(r"[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*\.litertlm\Z")
 GENERATION = re.compile(r"generations/[a-z0-9]+(?:-[a-z0-9]+)*\.json\Z")
-REQUIRED_GATES = ("requireRuntimeCompatibility", "requireArtifactVerification", "requireInferenceTest", "newVariantRequiresReview")
-POLICY_KEYS = set(REQUIRED_GATES) | {"metadataAutoPublish", "unchangedArtifactAutoPublish", "changedArtifactAutoPublish"}
+REQUIRED_GATES = ("requireArtifactVerification", "newVariantRequiresReview")
+POLICY_KEYS = set(REQUIRED_GATES) | {"requireRuntimeCompatibility", "requireInferenceTest", "metadataAutoPublish", "unchangedArtifactAutoPublish", "changedArtifactAutoPublish"}
 
 
 class CatalogError(ValueError):
@@ -151,7 +151,7 @@ def check_registry(registry):
     return {(row["generationId"], row["modelId"]): row for row in models}
 
 
-def check_variant(variant, registry_row, where):
+def check_variant(variant, registry_row, where, status):
     if not COMMIT.fullmatch(variant["revision"]):
         fail(where, "revision must be a pinned 40-hex commit, not a branch")
     if not SHA.fullmatch(variant["sha256"]):
@@ -168,10 +168,20 @@ def check_variant(variant, registry_row, where):
     if variant["minStorageBytes"] < variant["sizeBytes"]:
         fail(where, "hard storage below artifact size")
     evidence = variant["evidence"]
-    if set(evidence["backendTests"]) != set(variant["testedBackends"]):
-        fail(where, "backend without matching test evidence")
-    if not evidence["artifactSha256Verified"] or not evidence["runtimeTest"]:
-        fail(where, "missing artifact or runtime/inference evidence")
+    if not evidence["artifactSha256Verified"]:
+        fail(where, "artifact metadata SHA-256 not verified")
+    if status == "candidate":
+        if variant["testedBackends"] or variant.get("candidateBackends") != ["cpu"]:
+            fail(where, "candidate must identify CPU as untested, without tested backend claims")
+        if evidence["runtimeTest"] or evidence["backendTests"]:
+            fail(where, "candidate must not claim inference test evidence")
+        if not isinstance(variant.get("minDeviceRamBytes"), int) or variant["minDeviceRamBytes"] < variant["recommendedRamBytes"]:
+            fail(where, "candidate needs a documented device RAM floor")
+    else:
+        if variant.get("candidateBackends") or set(evidence["backendTests"]) != set(variant["testedBackends"]):
+            fail(where, "verified backend without matching test evidence")
+        if not variant["testedBackends"] or not evidence["runtimeTest"]:
+            fail(where, "missing runtime/inference evidence")
 
 
 def validate(production, registry_path, schema_dir, previous_index=None):
@@ -212,11 +222,13 @@ def validate(production, registry_path, schema_dir, previous_index=None):
             row = registry_map.get((generation_id, model["modelId"]))
             if row is None:
                 fail(where, "model missing from developer registry")
-            if model["status"] == "available" and (not model["variants"] or not row["enabled"]):
-                fail(where, "available model needs variants and enabled policy")
+            if model["status"] in ("available", "candidate") and (not model["variants"] or not row["enabled"]):
+                fail(where, "downloadable model needs variants and enabled policy")
+            if model["status"] == "available" and not (row["updatePolicy"]["requireRuntimeCompatibility"] and row["updatePolicy"]["requireInferenceTest"]):
+                fail(where, "verified model requires runtime and inference gates")
             if model["status"] == "unavailable" and model["variants"]:
                 fail(where, "unavailable model must not publish variants")
-            available |= model["status"] == "available"
+            available |= model["status"] in ("available", "candidate")
             for variant in model["variants"]:
                 if variant["variantId"] in variant_ids:
                     fail(where, "duplicate variant ID")
@@ -225,7 +237,7 @@ def validate(production, registry_path, schema_dir, previous_index=None):
                 if artifact_key in artifact_paths:
                     fail(where, "duplicate artifact path")
                 artifact_paths.add(artifact_key)
-                check_variant(variant, row, where)
+                check_variant(variant, row, where, model["status"])
         if generation["status"] != ("available" if available else "unavailable"):
             fail(relpath, "generation status does not match models")
     print(f"valid catalogVersion={index['catalogVersion']} generations={len(generation_ids)} models={len(model_ids)} variants={len(variant_ids)}")
