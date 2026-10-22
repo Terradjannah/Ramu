@@ -1,0 +1,470 @@
+{
+  "autoPublish": false,
+  "blocked": [
+    {
+      "modelId": null,
+      "path": "gemma-3n-E2B-it-int4-Web.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "google/gemma-3n-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-3n-E2B-it-int4.mediatek.mt6993.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "google/gemma-3n-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-3n-E4B-it-int4-Web.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "google/gemma-3n-E4B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it-gpu.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it-web.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it_Google_Tensor_G5.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it_Google_Tensor_G6.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it_Qualcomm_QCS8275.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it_intel_LNL.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E2B-it_intel_PTL.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E4B-it-gpu.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm"
+    },
+    {
+      "modelId": null,
+      "path": "gemma-4-E4B-it-web.litertlm",
+      "reason": "unlisted artifact variant requires reviewed curation",
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm"
+    },
+    {
+      "modelId": "gemma-4-e2b",
+      "reason": "candidate artifact or access change requires metadata review"
+    },
+    {
+      "modelId": "gemma-4-e4b",
+      "reason": "candidate artifact or access change requires metadata review"
+    }
+  ],
+  "candidate": {
+    "gemma-3": {
+      "familyId": "gemma",
+      "generationId": "gemma-3",
+      "models": [
+        {
+          "description": "Model Gemma 3n E2B IT INT4 untuk inferensi lokal melalui CPU LiteRT-LM.",
+          "familyId": "gemma",
+          "generationId": "gemma-3",
+          "modelId": "gemma-3n-e2b",
+          "name": "Gemma 3n E2B (IT INT4)",
+          "status": "available",
+          "variants": [
+            {
+              "abis": [
+                "arm64-v8a"
+              ],
+              "artifactVersion": 1,
+              "evidence": {
+                "artifactSha256Verified": true,
+                "artifactSource": "https://huggingface.co/api/models/google/gemma-3n-E2B-it-litert-lm/revision/c03b6f60b8da6c5400b6838a2cf26420f80c0a01?blobs=true",
+                "backendTests": {
+                  "cpu": "catalog/evidence/gemma-3n-e2b-cpu.json"
+                },
+                "gated": true,
+                "license": "gemma",
+                "runtimeTest": "catalog/evidence/gemma-3n-e2b-cpu.json"
+              },
+              "format": "litertlm",
+              "hardware": {
+                "driverIds": [],
+                "socIds": []
+              },
+              "minApi": 36,
+              "minDeviceRamBytes": 8000000000,
+              "minRamBytes": 2621440000,
+              "minStorageBytes": 3790045184,
+              "path": "gemma-3n-E2B-it-int4.litertlm",
+              "recommendedRamBytes": 8000000000,
+              "repoId": "google/gemma-3n-E2B-it-litert-lm",
+              "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+              "runtime": {
+                "maxVersion": "0.16.1",
+                "minVersion": "0.16.1"
+              },
+              "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6",
+              "sizeBytes": 3655827456,
+              "testedBackends": [
+                "cpu"
+              ],
+              "variantId": "gemma-3n-e2b-cpu"
+            }
+          ]
+        },
+        {
+          "description": "Kandidat CPU LiteRT-LM; unduhan memerlukan perangkat dengan RAM memadai. Inferensi pada Ramu belum teruji.",
+          "familyId": "gemma",
+          "generationId": "gemma-3",
+          "modelId": "gemma-3n-e4b",
+          "name": "Gemma 3n E4B (IT INT4)",
+          "status": "candidate",
+          "variants": [
+            {
+              "abis": [
+                "arm64-v8a"
+              ],
+              "artifactVersion": 1,
+              "candidateBackends": [
+                "cpu"
+              ],
+              "evidence": {
+                "artifactSha256Verified": true,
+                "artifactSource": "https://huggingface.co/api/models/google/gemma-3n-E4B-it-litert-lm/revision/297ed75955702dec3503e00c2c2ecbbf475300bc?blobs=true",
+                "backendTests": {},
+                "gated": true,
+                "license": "gemma",
+                "runtimeTest": ""
+              },
+              "format": "litertlm",
+              "hardware": {
+                "driverIds": [],
+                "socIds": []
+              },
+              "minApi": 29,
+              "minDeviceRamBytes": 12000000000,
+              "minRamBytes": 5767168000,
+              "minStorageBytes": 5053759488,
+              "path": "gemma-3n-E4B-it-int4.litertlm",
+              "recommendedRamBytes": 12000000000,
+              "repoId": "google/gemma-3n-E4B-it-litert-lm",
+              "revision": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+              "runtime": {
+                "maxVersion": "0.16.1",
+                "minVersion": "0.16.1"
+              },
+              "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4",
+              "sizeBytes": 4919541760,
+              "testedBackends": [],
+              "variantId": "gemma-3n-e4b-cpu"
+            }
+          ]
+        }
+      ],
+      "name": "Gemma 3n",
+      "schemaVersion": 1,
+      "status": "available"
+    },
+    "gemma-4": {
+      "familyId": "gemma",
+      "generationId": "gemma-4",
+      "models": [
+        {
+          "description": "Kandidat CPU LiteRT-LM untuk perangkat dengan RAM memadai; inferensi pada Ramu belum teruji.",
+          "familyId": "gemma",
+          "generationId": "gemma-4",
+          "modelId": "gemma-4-e2b",
+          "name": "Gemma 4 E2B IT",
+          "status": "candidate",
+          "variants": [
+            {
+              "abis": [
+                "arm64-v8a"
+              ],
+              "artifactVersion": 1,
+              "candidateBackends": [
+                "cpu"
+              ],
+              "evidence": {
+                "artifactSha256Verified": true,
+                "artifactSource": "https://huggingface.co/api/models/litert-community/gemma-4-E2B-it-litert-lm/revision/b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1?blobs=true",
+                "backendTests": {},
+                "gated": false,
+                "license": "apache-2.0",
+                "runtimeTest": ""
+              },
+              "format": "litertlm",
+              "hardware": {
+                "driverIds": [],
+                "socIds": []
+              },
+              "minApi": 29,
+              "minDeviceRamBytes": 8000000000,
+              "minRamBytes": 2621440000,
+              "minStorageBytes": 2722365440,
+              "path": "gemma-4-E2B-it.litertlm",
+              "recommendedRamBytes": 8000000000,
+              "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+              "revision": "b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1",
+              "runtime": {
+                "maxVersion": "0.16.1",
+                "minVersion": "0.16.1"
+              },
+              "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+              "sizeBytes": 2588147712,
+              "testedBackends": [],
+              "variantId": "gemma-4-e2b-cpu"
+            }
+          ]
+        },
+        {
+          "description": "Kandidat CPU LiteRT-LM untuk perangkat dengan RAM memadai; inferensi pada Ramu belum teruji.",
+          "familyId": "gemma",
+          "generationId": "gemma-4",
+          "modelId": "gemma-4-e4b",
+          "name": "Gemma 4 E4B IT",
+          "status": "candidate",
+          "variants": [
+            {
+              "abis": [
+                "arm64-v8a"
+              ],
+              "artifactVersion": 1,
+              "candidateBackends": [
+                "cpu"
+              ],
+              "evidence": {
+                "artifactSha256Verified": true,
+                "artifactSource": "https://huggingface.co/api/models/litert-community/gemma-4-E4B-it-litert-lm/revision/2eee7ac325f20eb8c9ac1d0e972f7c84663062da?blobs=true",
+                "backendTests": {},
+                "gated": false,
+                "license": "apache-2.0",
+                "runtimeTest": ""
+              },
+              "format": "litertlm",
+              "hardware": {
+                "driverIds": [],
+                "socIds": []
+              },
+              "minApi": 29,
+              "minDeviceRamBytes": 12000000000,
+              "minRamBytes": 5767168000,
+              "minStorageBytes": 3793747968,
+              "path": "gemma-4-E4B-it.litertlm",
+              "recommendedRamBytes": 12000000000,
+              "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+              "revision": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
+              "runtime": {
+                "maxVersion": "0.16.1",
+                "minVersion": "0.16.1"
+              },
+              "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+              "sizeBytes": 3659530240,
+              "testedBackends": [],
+              "variantId": "gemma-4-e4b-cpu"
+            }
+          ]
+        }
+      ],
+      "name": "Gemma 4",
+      "schemaVersion": 1,
+      "status": "available"
+    }
+  },
+  "changes": [
+    {
+      "after": {
+        "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+        "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+        "sizeBytes": 2588147712
+      },
+      "before": {
+        "revision": "b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1",
+        "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+        "sizeBytes": 2588147712
+      },
+      "variantId": "gemma-4-e2b-cpu"
+    },
+    {
+      "after": {
+        "revision": "e6a3892a8c22cf87ff99583996149cf3cb32452b",
+        "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+        "sizeBytes": 3659530240
+      },
+      "before": {
+        "revision": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
+        "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+        "sizeBytes": 3659530240
+      },
+      "variantId": "gemma-4-e4b-cpu"
+    }
+  ],
+  "observations": [
+    {
+      "accessMode": "manual",
+      "display": {},
+      "gated": true,
+      "generationId": "gemma-3",
+      "license": "gemma",
+      "modelId": "gemma-3n-e2b",
+      "path": "gemma-3n-E2B-it-int4.litertlm",
+      "repoId": "google/gemma-3n-E2B-it-litert-lm",
+      "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6",
+      "sizeBytes": 3655827456
+    },
+    {
+      "accessMode": "manual",
+      "display": {},
+      "gated": true,
+      "generationId": "gemma-3",
+      "license": "gemma",
+      "modelId": "gemma-3n-e4b",
+      "path": "gemma-3n-E4B-it-int4.litertlm",
+      "repoId": "google/gemma-3n-E4B-it-litert-lm",
+      "revision": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+      "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4",
+      "sizeBytes": 4919541760
+    },
+    {
+      "accessMode": false,
+      "display": {},
+      "gated": false,
+      "generationId": "gemma-4",
+      "license": "apache-2.0",
+      "modelId": "gemma-4-e2b",
+      "path": "gemma-4-E2B-it.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c",
+      "sizeBytes": 2588147712
+    },
+    {
+      "accessMode": false,
+      "display": {},
+      "gated": false,
+      "generationId": "gemma-4",
+      "license": "apache-2.0",
+      "modelId": "gemma-4-e4b",
+      "path": "gemma-4-E4B-it.litertlm",
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "revision": "e6a3892a8c22cf87ff99583996149cf3cb32452b",
+      "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+      "sizeBytes": 3659530240
+    }
+  ],
+  "previousVersion": 1,
+  "registrySha256": "e74b879d41fb81d84a22cc6f33e5422bfb950c7d94d775d22fb211962c38e080",
+  "risk": "review",
+  "schemaVersion": 1,
+  "unlistedArtifacts": [
+    {
+      "path": "gemma-3n-E2B-it-int4-Web.litertlm",
+      "repoId": "google/gemma-3n-E2B-it-litert-lm",
+      "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "sha256": "b6c8e1081ec80730f14473a5ece941b48da5d8e2a80c97c2963da153f3eff3d2",
+      "sizeBytes": 3038117888
+    },
+    {
+      "path": "gemma-3n-E2B-it-int4.mediatek.mt6993.litertlm",
+      "repoId": "google/gemma-3n-E2B-it-litert-lm",
+      "revision": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "sha256": "ba38d54766a3a51cb977499a852d9839843c496a4f2f16c8b472a2cd52b8ab94",
+      "sizeBytes": 4330192896
+    },
+    {
+      "path": "gemma-3n-E4B-it-int4-Web.litertlm",
+      "repoId": "google/gemma-3n-E4B-it-litert-lm",
+      "revision": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+      "sha256": "63730ba3225a23a90d3292d89fdeff1a7537cedeb72aa687de9a35732d057e52",
+      "sizeBytes": 4275044352
+    },
+    {
+      "path": "gemma-4-E2B-it-gpu.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "a53a59001894c58e6bdb5b9b227709f91a2e3e556baa7d85acf9c55402ba5cf5",
+      "sizeBytes": 2008432640
+    },
+    {
+      "path": "gemma-4-E2B-it-web.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "3a08e8d94e23b814ae5414469c370c503813949acb8ceaa17e4ebf8a35af35b5",
+      "sizeBytes": 2008432640
+    },
+    {
+      "path": "gemma-4-E2B-it_Google_Tensor_G5.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "af1082986639ecde7db95d91be6fe54f8b6b458104734c5bafc204e69d6852dc",
+      "sizeBytes": 3113545589
+    },
+    {
+      "path": "gemma-4-E2B-it_Google_Tensor_G6.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "f86c7c19c736e9307267946edef58b0a45494a9127036d54d90dd6b7617c95b7",
+      "sizeBytes": 3313938293
+    },
+    {
+      "path": "gemma-4-E2B-it_Qualcomm_QCS8275.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "794339191f0e1dc8353b7f84fb205af5e62870ed5647a315eddbf7a9a9c90f06",
+      "sizeBytes": 2722352245
+    },
+    {
+      "path": "gemma-4-E2B-it_intel_LNL.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "dacc900381bdc837696fc5deb1f3b7dbfe0854295dc3934564e1841086ab0383",
+      "sizeBytes": 2960506880
+    },
+    {
+      "path": "gemma-4-E2B-it_intel_PTL.litertlm",
+      "repoId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "revision": "a790a852d433991c0c0a41c1154cf9b3850300fa",
+      "sha256": "8c0877f721ff0c057a007b330bbf9f6ec4d0278e730f88db95f2252372c701e8",
+      "sizeBytes": 2948333568
+    },
+    {
+      "path": "gemma-4-E4B-it-gpu.litertlm",
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "revision": "e6a3892a8c22cf87ff99583996149cf3cb32452b",
+      "sha256": "4912bb5a9c30993c51a7711f763212077458529312175df0573a78323a2bb7ff",
+      "sizeBytes": 2969059328
+    },
+    {
+      "path": "gemma-4-E4B-it-web.litertlm",
+      "repoId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "revision": "e6a3892a8c22cf87ff99583996149cf3cb32452b",
+      "sha256": "3904d826d5dddd25ea173e85204caec09e68ba038116e9b992b69cbdc94f57a0",
+      "sizeBytes": 2969059328
+    }
+  ]
+}
